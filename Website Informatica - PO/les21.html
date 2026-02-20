@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Les 21: Modules en Libraries</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">Python Les 21: Modules en Libraries</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 9?</h3>
+      <ul>
+        <li>Wat zijn modules?</li>
+        <li>Modules importeren</li>
+        <li>Eigen modules maken</li>
+        <li>Standard library</li>
+        <li>Externe libraries installeren</li>
+        <li>Populaire Python libraries</li>
+        <li>Virtual environments</li>
+        <li>Requirements.txt</li>
+      </ul>
+      <h3>Aan het eind van les 9 kun je:</h3>
+      <ul>
+        <li>Modules importeren en gebruiken</li>
+        <li>Eigen modules schrijven</li>
+        <li>Externe libraries installeren</li>
+        <li>Virtual environments beheren</li>
+        <li>Populaire libraries toepassen</li>
+        <li>Project dependencies beheren</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-puzzle-piece" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Modules</h3>
+        <p>Herbruikbare code blokken</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat zijn Modules?</h2>
+      <p>
+        <strong>Modules</strong> zijn bestanden met Python code die je kunt hergebruiken in andere programma's.
+        Ze bevatten functies, klassen en variabelen die je kunt importeren.
+      </p>
+
+      <h3>Voordelen van modules</h3>
+      <ul>
+        <li><strong>Herbruikbaarheid:</strong> Code kan in meerdere programma's gebruikt worden</li>
+        <li><strong>Organisatie:</strong> Grote programma's worden opgedeeld in kleinere delen</li>
+        <li><strong>Onderhoudbaarheid:</strong> Makkelijker om code te wijzigen</li>
+        <li><strong>Namespaces:</strong> Voorkomt naamconflicten</li>
+        <li><strong>Distributie:</strong> Code kan eenvoudig gedeeld worden</li>
+      </ul>
+
+      <h3>Built-in modules</h3>
+      <pre><code class="language-python"># math module voor wiskundige functies
+import math
+
+print(math.sqrt(16))    # 4.0
+print(math.pi)          # 3.141592653589793
+print(math.sin(math.pi/2))  # 1.0
+
+# datetime module voor datums en tijden
+import datetime
+
+nu = datetime.datetime.now()
+print(nu)               # 2024-01-15 14:30:45.123456
+print(nu.year)          # 2024
+print(nu.strftime("%d-%m-%Y"))  # 15-01-2024
+
+# random module voor willekeurige getallen
+import random
+
+print(random.randint(1, 10))  # Willekeurig getal tussen 1 en 10
+print(random.choice(["appel", "banaan", "kers"]))  # Willekeurige keuze</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-download" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Importeren</h3>
+        <p>Modules gebruiken</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Modules Importeren</h2>
+
+      <h3>Verschillende manieren om te importeren</h3>
+      <pre><code class="language-python"># Volledige module importeren
+import math
+resultaat = math.sqrt(25)
+
+# Specifieke functies importeren
+from math import sqrt, pi
+resultaat = sqrt(25)
+
+# Alias gebruiken
+import math as m
+resultaat = m.sqrt(25)
+
+# Alles importeren (niet aanbevolen)
+from math import *
+resultaat = sqrt(25)</code></pre>
+
+      <h3>Voorbeelden met verschillende modules</h3>
+      <pre><code class="language-python"># os module voor operating system functies
+import os
+
+print(os.getcwd())      # Huidige directory
+print(os.listdir("."))  # Bestanden in huidige directory
+
+# sys module voor systeem-specifieke functies
+import sys
+
+print(sys.version)      # Python versie
+print(sys.platform)     # Platform (win32, linux, darwin)
+
+# json module voor JSON data
+import json
+
+data = {"naam": "Lucas", "leeftijd": 16}
+json_string = json.dumps(data)
+print(json_string)      # {"naam": "Lucas", "leeftijd": 16}
+
+# urllib voor web requests
+from urllib.request import urlopen
+
+try:
+    with urlopen("https://www.python.org") as response:
+        html = response.read().decode('utf-8')
+        print(f"Python website is {len(html)} karakters lang")
+except:
+    print("Kon website niet bereiken")</code></pre>
+
+      <h3>Module search path</h3>
+      <pre><code class="language-python">import sys
+
+print("Python zoekt modules in deze directories:")
+for path in sys.path:
+    print(f"  {path}")
+
+# Eigen directory toevoegen aan search path
+sys.path.append("/mijn/eigen/modules")
+
+# Of gebruik PYTHONPATH environment variable
+import os
+print(f"PYTHONPATH: {os.environ.get('PYTHONPATH', 'Niet ingesteld')}")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Eigen Modules Maken</h2>
+
+      <h3>Eenvoudige module maken</h3>
+      <p>Maak een bestand <code>mijn_module.py</code> met de volgende inhoud:</p>
+      <pre><code class="language-python"># mijn_module.py
+def groet(naam):
+    """Een functie die groet"""
+    return f"Hallo {naam}!"
+
+def tel_op(a, b):
+    """Telt twee getallen op"""
+    return a + b
+
+PI = 3.14159
+
+class Calculator:
+    """Een eenvoudige rekenmachine klasse"""
+    def multiply(self, a, b):
+        return a * b</code></pre>
+
+      <h3>Module gebruiken</h3>
+      <pre><code class="language-python"># In een ander bestand
+import mijn_module
+
+print(mijn_module.groet("Lucas"))  # Hallo Lucas!
+print(mijn_module.tel_op(5, 3))    # 8
+print(mijn_module.PI)              # 3.14159
+
+calc = mijn_module.Calculator()
+print(calc.multiply(4, 5))         # 20</code></pre>
+
+      <h3>Module met __name__</h3>
+      <pre><code class="language-python"># mijn_module.py
+def hoofdfunctie():
+    print("Dit is de hoofdfunctie")
+
+def hulpfunctie():
+    print("Dit is een hulpfunctie")
+
+if __name__ == "__main__":
+    # Deze code wordt alleen uitgevoerd als het bestand direct wordt gerund
+    print("Module wordt direct uitgevoerd")
+    hoofdfunctie()
+else:
+    # Deze code wordt uitgevoerd bij importeren
+    print("Module wordt geïmporteerd")</code></pre>
+
+      <h3>Packages maken</h3>
+      <p>Maak een directory structuur:</p>
+      <pre><code>mijn_package/
+├── __init__.py
+├── module1.py
+└── subpackage/
+    ├── __init__.py
+    └── module2.py</code></pre>
+
+      <pre><code class="language-python"># __init__.py (in mijn_package)
+# Dit bestand maakt het een package
+
+# module1.py
+def functie1():
+    return "Functie 1"
+
+# subpackage/module2.py
+def functie2():
+    return "Functie 2"
+
+# Gebruiken
+from mijn_package import module1
+from mijn_package.subpackage import module2
+
+print(module1.functie1())  # Functie 1
+print(module2.functie2())  # Functie 2</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-box" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Libraries</h3>
+        <p>Externe code bibliotheken</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Externe Libraries</h2>
+
+      <h3>pip gebruiken</h3>
+      <pre><code class="language-bash"># Library installeren
+pip install requests
+
+# Specifieke versie
+pip install requests==2.28.0
+
+# Upgrade naar nieuwste versie
+pip install --upgrade requests
+
+# Library verwijderen
+pip uninstall requests
+
+# Geïnstalleerde packages tonen
+pip list
+
+# Informatie over een package
+pip show requests</code></pre>
+
+      <h3>requirements.txt</h3>
+      <pre><code>Flask==2.3.2
+requests==2.28.1
+pandas==1.5.3
+numpy==1.24.2
+matplotlib==3.6.3</code></pre>
+
+      <pre><code class="language-bash"># Alle dependencies installeren
+pip install -r requirements.txt
+
+# requirements.txt genereren
+pip freeze > requirements.txt</code></pre>
+
+      <h3>Virtual environments</h3>
+      <pre><code class="language-bash"># Virtual environment maken
+python -m venv mijn_project
+
+# Activeren (Windows)
+mijn_project\Scripts\activate
+
+# Activeren (macOS/Linux)
+source mijn_project/bin/activate
+
+# In geactiveerde environment packages installeren
+pip install requests flask
+
+# Environment deactiveren
+deactivate
+
+# Environment verwijderen
+rm -rf mijn_project  # macOS/Linux
+# rmdir /s mijn_project  # Windows</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Populaire Python Libraries</h2>
+
+      <h3>Web development</h3>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <th style="border: 1px solid #ddd; padding: 8px;">Library</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Gebruik</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Voorbeeld</th>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">Flask</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Web frameworks</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">from flask import Flask</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">Django</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Full-stack web framework</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">django-admin startproject</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">requests</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">HTTP requests</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">requests.get('https://...')</td>
+        </tr>
+      </table>
+
+      <h3>Data analyse</h3>
+      <pre><code class="language-python"># pandas voor data manipulatie
+import pandas as pd
+
+data = {
+    'Naam': ['Lucas', 'Joris', 'Emma'],
+    'Leeftijd': [16, 17, 16],
+    'Cijfer': [8.5, 7.8, 9.1]
+}
+
+df = pd.DataFrame(data)
+print(df)
+print(f"Gemiddelde leeftijd: {df['Leeftijd'].mean()}")
+
+# numpy voor numerieke berekeningen
+import numpy as np
+
+array = np.array([1, 2, 3, 4, 5])
+print(f"Gemiddelde: {np.mean(array)}")
+print(f"Standaard deviatie: {np.std(array)}")
+
+# matplotlib voor visualisaties
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
+
+plt.plot(x, y)
+plt.title("Voorbeeld grafiek")
+plt.xlabel("X-as")
+plt.ylabel("Y-as")
+plt.show()</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-gamepad" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Games & GUI</h3>
+        <p>Interactieve toepassingen</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Games en GUI Libraries</h2>
+
+      <h3>Pygame voor games</h3>
+      <pre><code class="language-python">import pygame
+import sys
+
+# Pygame initialiseren
+pygame.init()
+
+# Scherm instellen
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("Mijn Eerste Game")
+
+# Kleuren
+WHITE = (255, 255, 255)
+BLUE = (0, 0, 255)
+
+# Speler positie
+player_x = 400
+player_y = 300
+
+# Game loop
+running = True
+while running:
+    # Events afhandelen
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Toetsen afhandelen
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        player_x -= 5
+    if keys[pygame.K_RIGHT]:
+        player_x += 5
+
+    # Scherm vullen
+    screen.fill(WHITE)
+
+    # Speler tekenen
+    pygame.draw.circle(screen, BLUE, (player_x, player_y), 20)
+
+    # Scherm updaten
+    pygame.display.flip()
+
+pygame.quit()
+sys.exit()</code></pre>
+
+      <h3>tkinter voor GUI</h3>
+      <pre><code class="language-python">import tkinter as tk
+from tkinter import messagebox
+
+def toon_groet():
+    naam = naam_entry.get()
+    if naam:
+        messagebox.showinfo("Groet", f"Hallo {naam}!")
+    else:
+        messagebox.showwarning("Waarschuwing", "Voer een naam in!")
+
+# Hoofdvenster maken
+root = tk.Tk()
+root.title("Eenvoudige GUI")
+root.geometry("300x200")
+
+# Widgets toevoegen
+naam_label = tk.Label(root, text="Naam:")
+naam_label.pack(pady=10)
+
+naam_entry = tk.Entry(root)
+naam_entry.pack(pady=5)
+
+groet_button = tk.Button(root, text="Groet!", command=toon_groet)
+groet_button.pack(pady=20)
+
+# Applicatie starten
+root.mainloop()</code></pre>
+
+      <h3>Turtle graphics</h3>
+      <pre><code class="language-python">import turtle
+
+# Turtle scherm instellen
+screen = turtle.Screen()
+screen.title("Turtle Graphics")
+
+# Turtle object maken
+t = turtle.Turtle()
+t.speed(1)  # Langzaam voor demonstratie
+
+# Vierkant tekenen
+for _ in range(4):
+    t.forward(100)
+    t.right(90)
+
+# Cirkel tekenen
+t.penup()
+t.goto(150, 0)
+t.pendown()
+t.circle(50)
+
+# Ster tekenen
+t.penup()
+t.goto(-150, 0)
+t.pendown()
+
+for _ in range(5):
+    t.forward(100)
+    t.right(144)
+
+turtle.done()</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Machine Learning Libraries</h2>
+
+      <h3>scikit-learn voor ML</h3>
+      <pre><code class="language-python">from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+# Iris dataset laden
+iris = load_iris()
+X = iris.data  # Features
+y = iris.target  # Labels
+
+# Data splitsen in train/test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Model maken en trainen
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_train, y_train)
+
+# Voorspellingen maken
+predictions = knn.predict(X_test)
+
+# Accuracy berekenen
+accuracy = accuracy_score(y_test, predictions)
+print(f"Model accuracy: {accuracy:.2f}")</code></pre>
+
+      <h3>TensorFlow/PyTorch voor deep learning</h3>
+      <pre><code class="language-python">import tensorflow as tf
+import numpy as np
+
+# Simpel neuraal netwerk voor XOR probleem
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(4, activation='relu', input_shape=(2,)),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
+
+# Model compileren
+model.compile(optimizer='adam',
+              loss='binary_crossentropy',
+              metrics=['accuracy'])
+
+# XOR data
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([[0], [1], [1], [0]])
+
+# Model trainen
+model.fit(X, y, epochs=1000, verbose=0)
+
+# Voorspellingen
+predictions = model.predict(X)
+print("Voorspellingen voor XOR:")
+for i, pred in enumerate(predictions):
+    print(f"{X[i]} -> {pred[0]:.3f} (verwacht: {y[i][0]})")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktijkopdracht</h2>
+
+      <h3>Oefening 1: Eigen module maken</h3>
+      <p>Maak een module met:</p>
+      <ul>
+        <li>Wiskundige functies (gemiddelde, mediaan, modus)</li>
+        <li>String utilities (omkeren, tellen klinkers)</li>
+        <li>Eigen klasse voor data analyse</li>
+        <li>Unit tests voor de functies</li>
+      </ul>
+
+      <h3>Oefening 2: Data analyse project</h3>
+      <p>Gebruik pandas en matplotlib om:</p>
+      <ul>
+        <li>CSV bestand in te lezen</li>
+        <li>Data te analyseren en visualiseren</li>
+        <li>Statistische berekeningen te maken</li>
+        <li>Rapport te genereren</li>
+      </ul>
+
+      <h3>Oefening 3: Web scraper</h3>
+      <p>Bouw een web scraper met:</p>
+      <ul>
+        <li>requests voor HTTP requests</li>
+        <li>BeautifulSoup voor HTML parsing</li>
+        <li>Data extractie en opslag</li>
+        <li>Error handling</li>
+      </ul>
+
+      <h3>Oefening 4: Game development</h3>
+      <p>Maak een eenvoudig spel met:</p>
+      <ul>
+        <li>Pygame voor graphics en input</li>
+        <li>Speler karakter met beweging</li>
+        <li>Obstakels en collision detection</li>
+        <li>Score systeem</li>
+      </ul>
+
+      <h3>Final Project: Persoonlijk project</h3>
+      <p>Kies een onderwerp dat je interesseert en bouw een complete applicatie met:</p>
+      <ul>
+        <li>Meerdere modules/packages</li>
+        <li>Externe libraries</li>
+        <li>Object-oriented design</li>
+        <li>File I/O</li>
+        <li>Error handling</li>
+        <li>Gebruiksvriendelijke interface</li>
+      </ul>
+    
+    <a href="opgaven.html" class="volgende-les">Bekijk opgaven (Helaas zijn de python opgaven nog niet beschikbaar)</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>JavaScript Lessen</h4>
+        <ul>
+          <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+          <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+          <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+          <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+          <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <a href="les16.html">Python Les 16: Functies</a>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

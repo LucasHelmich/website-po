@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Les 16: Functies</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </a>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">Python Les 16: Functies</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 4?</h3>
+      <ul>
+        <li>Wat zijn functies?</li>
+        <li>Functies definiëren</li>
+        <li>Parameters en argumenten</li>
+        <li>Return statements</li>
+        <li>Scope van variabelen</li>
+        <li>Built-in functies</li>
+        <li>Lambda functies</li>
+      </ul>
+      <h3>Aan het eind van les 4 kun je:</h3>
+      <ul>
+        <li>Eigen functies schrijven</li>
+        <li>Functies gebruiken om code te organiseren</li>
+        <li>Parameters doorgeven aan functies</li>
+        <li>Waarden teruggeven met return</li>
+        <li>Built-in functies gebruiken</li>
+        <li>Eenvoudige lambda functies maken</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-cogs" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Functies</h3>
+        <p>Herbruikbare code blokken</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat zijn functies?</h2>
+      <p>
+        <strong>Functies</strong> zijn herbruikbare blokken code die een specifieke taak uitvoeren. Ze helpen je om:
+      </p>
+      <ul>
+        <li>Code te organiseren</li>
+        <li>Herhaling te voorkomen</li>
+        <li>Code makkelijker te onderhouden</li>
+        <li>Complexe problemen op te splitsen</li>
+      </ul>
+
+      <h3>Voorbeeld zonder functie</h3>
+      <pre><code class="language-python">print("Welkom bij de rekenmachine!")
+getal1 = 5
+getal2 = 3
+resultaat = getal1 + getal2
+print(f"{getal1} + {getal2} = {resultaat}")
+
+getal1 = 10
+getal2 = 7
+resultaat = getal1 + getal2
+print(f"{getal1} + {getal2} = {resultaat}")
+
+getal1 = 8
+getal2 = 2
+resultaat = getal1 + getal2
+print(f"{getal1} + {getal2} = {resultaat}")</code></pre>
+
+      <h3>Voorbeeld met functie</h3>
+      <pre><code class="language-python">def tel_op(getal1, getal2):
+    resultaat = getal1 + getal2
+    print(f"{getal1} + {getal2} = {resultaat}")
+
+print("Welkom bij de rekenmachine!")
+tel_op(5, 3)
+tel_op(10, 7)
+tel_op(8, 2)</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-pencil" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Definiëren</h3>
+        <p>Functies maken</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Functies Definiëren</h2>
+
+      <h3>Basis functie</h3>
+      <pre><code class="language-python">def groet():
+    print("Hallo!")
+    print("Welkom bij Python!")
+
+# Functie aanroepen
+groet()</code></pre>
+
+      <h3>Functie met parameters</h3>
+      <pre><code class="language-python">def groet_persoonlijk(naam):
+    print(f"Hallo {naam}!")
+    print("Welkom bij Python!")
+
+groet_persoonlijk("Lucas")
+groet_persoonlijk("Joris")</code></pre>
+
+      <h3>Functie met meerdere parameters</h3>
+      <pre><code class="language-python">def bereken_bmi(gewicht, lengte):
+    bmi = gewicht / (lengte ** 2)
+    print(f"Je BMI is: {bmi:.1f}")
+
+bereken_bmi(70, 1.75)  # Gewicht in kg, lengte in meters</code></pre>
+
+      <h3>Default parameters</h3>
+      <pre><code class="language-python">def groet_met_tijd(naam, tijd="dag"):
+    print(f"Goede{tijd} {naam}!")
+
+groet_met_tijd("Lucas")           # Gebruikt default "dag"
+groet_met_tijd("Joris", "avond")  # Overschrijft default</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Return Statements</h2>
+
+      <h3>Functie zonder return</h3>
+      <pre><code class="language-python">def tel_op_en_print(a, b):
+    print(a + b)
+
+resultaat = tel_op_en_print(5, 3)
+print(f"Resultaat: {resultaat}")  # Output: None</code></pre>
+
+      <h3>Functie met return</h3>
+      <pre><code class="language-python">def tel_op(a, b):
+    return a + b
+
+resultaat = tel_op(5, 3)
+print(f"Resultaat: {resultaat}")  # Output: 8</code></pre>
+
+      <h3>Meerdere return statements</h3>
+      <pre><code class="language-python">def maximum(a, b):
+    if a > b:
+        return a
+    else:
+        return b
+
+print(maximum(5, 3))   # Output: 5
+print(maximum(2, 7))   # Output: 7</code></pre>
+
+      <h3>Return zonder waarde</h3>
+      <pre><code class="language-python">def check_leeftijd(leeftijd):
+    if leeftijd < 0:
+        print("Ongeldige leeftijd!")
+        return  # Stopt de functie vroegtijdig
+
+    if leeftijd >= 18:
+        return "volwassene"
+    else:
+        return "minderjarig"
+
+print(check_leeftijd(25))   # Output: volwassene
+print(check_leeftijd(-5))   # Output: Ongeldige leeftijd! None</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-eye" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Scope</h3>
+        <p>Variabele zichtbaarheid</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Scope van Variabelen</h2>
+
+      <h3>Local scope</h3>
+      <pre><code class="language-python">def mijn_functie():
+    lokale_var = "Ik ben lokaal"
+    print(lokale_var)
+
+mijn_functie()
+# print(lokale_var)  # Error: lokale_var is niet gedefinieerd</code></pre>
+
+      <h3>Global scope</h3>
+      <pre><code class="language-python">globale_var = "Ik ben globaal"
+
+def mijn_functie():
+    print(globale_var)  # Kan globale variabele lezen
+
+mijn_functie()
+print(globale_var)</code></pre>
+
+      <h3>Global keyword</h3>
+      <pre><code class="language-python">teller = 0
+
+def verhoog_teller():
+    global teller
+    teller += 1
+    print(f"Teller: {teller}")
+
+verhoog_teller()
+verhoog_teller()
+print(f"Eindwaarde: {teller}")</code></pre>
+
+      <h3>Nonlocal keyword</h3>
+      <pre><code class="language-python">def buitenste():
+    x = "buitenste"
+
+    def binnenste():
+        nonlocal x
+        x = "binnenste"
+        print(f"Binnenste: {x}")
+
+    binnenste()
+    print(f"Buitenste: {x}")
+
+buitenste()</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Built-in Functies</h2>
+
+      <h3>Veelgebruikte built-in functies</h3>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <th style="border: 1px solid #ddd; padding: 8px;">Functie</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Beschrijving</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Voorbeeld</th>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">len()</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Lengte van een object</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">len("hallo") → 5</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">max()</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Grootste waarde</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">max(1, 5, 3) → 5</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">min()</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Kleinste waarde</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">min(1, 5, 3) → 1</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">sum()</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Som van getallen</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">sum([1, 2, 3]) → 6</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">abs()</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Absolute waarde</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">abs(-5) → 5</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">round()</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Afronden</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">round(3.7) → 4</td>
+        </tr>
+      </table>
+
+      <h3>Voorbeelden</h3>
+      <pre><code class="language-python">tekst = "Python is leuk!"
+print(f"Lengte: {len(tekst)}")
+
+getallen = [1, 5, 3, 9, 2]
+print(f"Grootste: {max(getallen)}")
+print(f"Kleinste: {min(getallen)}")
+print(f"Som: {sum(getallen)}")
+
+print(f"Absolute waarde: {abs(-10)}")
+print(f"Afgerond: {round(3.14159, 2)}")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-flash" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Lambda</h3>
+        <p>Anonieme functies</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Lambda Functies</h2>
+
+      <h3>Normale functie vs lambda</h3>
+      <pre><code class="language-python"># Normale functie
+def kwadraat(x):
+    return x ** 2
+
+# Lambda functie
+kwadraat_lambda = lambda x: x ** 2
+
+print(kwadraat(5))          # Output: 25
+print(kwadraat_lambda(5))   # Output: 25</code></pre>
+
+      <h3>Lambda met meerdere parameters</h3>
+      <pre><code class="language-python">optellen = lambda a, b: a + b
+print(optellen(3, 4))  # Output: 7
+
+# Direct gebruiken
+print((lambda a, b: a * b)(6, 7))  # Output: 42</code></pre>
+
+      <h3>Lambda in sorted()</h3>
+      <pre><code class="language-python">studenten = [
+    {"naam": "Lucas", "cijfer": 8.5},
+    {"naam": "Joris", "cijfer": 7.2},
+    {"naam": "Emma", "cijfer": 9.1}
+]
+
+# Sorteren op cijfer
+gesorteerd = sorted(studenten, key=lambda student: student["cijfer"])
+for student in gesorteerd:
+    print(f"{student['naam']}: {student['cijfer']}")</code></pre>
+
+      <h3>Lambda in filter()</h3>
+      <pre><code class="language-python">getallen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Alleen even getallen
+even_getallen = list(filter(lambda x: x % 2 == 0, getallen))
+print(even_getallen)  # Output: [2, 4, 6, 8, 10]
+
+# Getallen groter dan 5
+grote_getallen = list(filter(lambda x: x > 5, getallen))
+print(grote_getallen)  # Output: [6, 7, 8, 9, 10]</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktijkopdracht</h2>
+
+      <h3>Oefening 1: Temperatuur converter</h3>
+      <p>Schrijf functies om:</p>
+      <ul>
+        <li>Celsius naar Fahrenheit om te rekenen</li>
+        <li>Fahrenheit naar Celsius om te rekenen</li>
+        <li>Temperatuur status te bepalen (heet, warm, koud)</li>
+      </ul>
+
+      <h3>Oefening 2: Wiskundige functies</h3>
+      <p>Maak functies voor:</p>
+      <ul>
+        <li>Faculteit berekenen (5! = 5×4×3×2×1)</li>
+        <li>Fibonacci reeks genereren</li>
+        <li>Controleren of een getal een priemgetal is</li>
+      </ul>
+
+      <h3>Oefening 3: String functies</h3>
+      <p>Schrijf functies die:</p>
+      <ul>
+        <li>Een string omkeren</li>
+        <li>Tellen hoeveel klinkers er in een tekst zitten</li>
+        <li>Een tekst opschonen (hoofdletters, interpunctie)</li>
+      </ul>
+
+      <h3>Oefening 4: Bankrekening systeem</h3>
+      <p>Maak een eenvoudig banksysteem met functies voor:</p>
+      <ul>
+        <li>Saldo bekijken</li>
+        <li>Geld storten</li>
+        <li>Geld opnemen</li>
+        <li>Rente berekenen</li>
+      </ul>
+
+      <a href="
+        class="volgende-les">Volgende Les: Lists en Tuples <i class="fa fa-arrow-right"></i></a>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>JavaScript Lessen</h4>
+        <ul>
+          <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+          <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+          <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+          <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+          <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

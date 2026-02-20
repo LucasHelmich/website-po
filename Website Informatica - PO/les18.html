@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Les 18: Dictionaries en Sets</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </a>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">Python Les 18: Dictionaries en Sets</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 6?</h3>
+      <ul>
+        <li>Wat zijn dictionaries?</li>
+        <li>Dictionary operaties</li>
+        <li>Dictionary methodes</li>
+        <li>Wat zijn sets?</li>
+        <li>Set operaties</li>
+        <li>Dictionary comprehensions</li>
+        <li>Set comprehensions</li>
+      </ul>
+      <h3>Aan het eind van les 6 kun je:</h3>
+      <ul>
+        <li>Dictionaries maken en gebruiken</li>
+        <li>Sets maken en gebruiken</li>
+        <li>Dictionary en set methodes toepassen</li>
+        <li>Comprehensions schrijven</li>
+        <li>Data organiseren met key-value pairs</li>
+        <li>Unieke waarden beheren</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-book" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Key-Value Stores</h3>
+        <p>Dictionaries en Sets</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat zijn Dictionaries?</h2>
+      <p>
+        <strong>Dictionaries</strong> zijn veranderlijke datastructuren die key-value paren bevatten.
+        Ze worden gebruikt om data te organiseren waar je snel kunt opzoeken op basis van een sleutel.
+      </p>
+
+      <h3>Dictionaries maken</h3>
+      <pre><code class="language-python"># Lege dictionary
+lege_dict = {}
+
+# Dictionary met data
+student = {
+    "naam": "Lucas",
+    "leeftijd": 16,
+    "klas": "4VWO",
+    "gemiddelde": 8.5
+}
+
+# Dictionary constructor
+dict_constructor = dict(naam="Joris", leeftijd=17, stad="Amsterdam")
+
+# Dictionary van lists
+telefoonboek = {
+    "Lucas": "06-12345678",
+    "Joris": "06-87654321",
+    "Emma": "06-11223344"
+}
+
+print(lege_dict)
+print(student)
+print(dict_constructor)
+print(telefoonboek)</code></pre>
+
+      <h3>Toegang tot waarden</h3>
+      <pre><code class="language-python">student = {
+    "naam": "Lucas",
+    "leeftijd": 16,
+    "klas": "4VWO",
+    "gemiddelde": 8.5
+}
+
+# Toegang via key
+print(student["naam"])      # Lucas
+print(student["leeftijd"])  # 16
+
+# get() methode (veiliger)
+print(student.get("klas"))      # 4VWO
+print(student.get("adres", "Onbekend"))  # Onbekend (default waarde)
+
+# Keys, values en items
+print(student.keys())    # dict_keys(['naam', 'leeftijd', 'klas', 'gemiddelde'])
+print(student.values())  # dict_values(['Lucas', 16, '4VWO', 8.5])
+print(student.items())   # dict_items([('naam', 'Lucas'), ('leeftijd', 16), ...])</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-edit" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Dictionary Operaties</h3>
+        <p>Bewerken van dictionaries</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Dictionary Operaties</h2>
+
+      <h3>Waarden toevoegen/wijzigen</h3>
+      <pre><code class="language-python">student = {"naam": "Lucas", "leeftijd": 16}
+
+# Nieuwe key-value paar toevoegen
+student["klas"] = "4VWO"
+print(student)  # {'naam': 'Lucas', 'leeftijd': 16, 'klas': '4VWO'}
+
+# Bestaande waarde wijzigen
+student["leeftijd"] = 17
+print(student)  # {'naam': 'Lucas', 'leeftijd': 17, 'klas': '4VWO'}
+
+# update() methode
+student.update({"gemiddelde": 8.5, "vakken": ["NL", "EN", "WK"]})
+print(student)</code></pre>
+
+      <h3>Waarden verwijderen</h3>
+      <pre><code class="language-python">student = {
+    "naam": "Lucas",
+    "leeftijd": 17,
+    "klas": "4VWO",
+    "gemiddelde": 8.5
+}
+
+# pop() - verwijdert en retourneert waarde
+leeftijd = student.pop("leeftijd")
+print(f"Verwijderde leeftijd: {leeftijd}")  # 17
+print(student)
+
+# popitem() - verwijdert laatste key-value paar
+laatste = student.popitem()
+print(f"Laatste item: {laatste}")  # ('gemiddelde', 8.5)
+
+# del statement
+del student["klas"]
+print(student)  # {'naam': 'Lucas'}
+
+# clear() - maakt dictionary leeg
+student.clear()
+print(student)  # {}</code></pre>
+
+      <h3>Controleren of key bestaat</h3>
+      <pre><code class="language-python">student = {"naam": "Lucas", "leeftijd": 16}
+
+# in operator
+print("naam" in student)        # True
+print("adres" in student)       # False
+
+# not in operator
+print("adres" not in student)   # True
+
+# Veilige toegang
+if "leeftijd" in student:
+    print(f"Leeftijd: {student['leeftijd']}")
+else:
+    print("Leeftijd niet bekend")
+
+# Of met get()
+leeftijd = student.get("leeftijd", "Onbekend")
+print(f"Leeftijd: {leeftijd}")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Dictionary Iteratie</h2>
+
+      <h3>Itereren over dictionaries</h3>
+      <pre><code class="language-python">student = {
+    "naam": "Lucas",
+    "leeftijd": 16,
+    "klas": "4VWO",
+    "vakken": ["NL", "EN", "WK"]
+}
+
+# Itereren over keys
+print("Keys:")
+for key in student:
+    print(f"  {key}")
+
+# Itereren over keys (expliciet)
+print("\nKeys (expliciet):")
+for key in student.keys():
+    print(f"  {key}")
+
+# Itereren over values
+print("\nValues:")
+for value in student.values():
+    print(f"  {value}")
+
+# Itereren over items (key-value paren)
+print("\nKey-Value paren:")
+for key, value in student.items():
+    print(f"  {key}: {value}")</code></pre>
+
+      <h3>Praktische voorbeelden</h3>
+      <pre><code class="language-python"># Studenten database
+studenten = {
+    "Lucas": {"leeftijd": 16, "gemiddelde": 8.5},
+    "Joris": {"leeftijd": 17, "gemiddelde": 7.8},
+    "Emma": {"leeftijd": 16, "gemiddelde": 9.2}
+}
+
+# Gemiddelde leeftijd berekenen
+totaal_leeftijd = 0
+for student_data in studenten.values():
+    totaal_leeftijd += student_data["leeftijd"]
+
+gemiddelde_leeftijd = totaal_leeftijd / len(studenten)
+print(f"Gemiddelde leeftijd: {gemiddelde_leeftijd}")
+
+# Studenten met gemiddelde >= 8.0
+print("\nGoede studenten:")
+for naam, data in studenten.items():
+    if data["gemiddelde"] >= 8.0:
+        print(f"  {naam}: {data['gemiddelde']}")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-circle-o" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Sets</h3>
+        <p>Unieke verzamelingen</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Wat zijn Sets?</h2>
+
+      <h3>Sets maken</h3>
+      <pre><code class="language-python"># Lege set
+lege_set = set()
+
+# Set met waarden
+kleuren = {"rood", "groen", "blauw", "rood"}  # Duplicaat wordt verwijderd
+print(kleuren)  # {'blauw', 'groen', 'rood'} (volgorde niet gegarandeerd)
+
+# Set van list
+getallen = set([1, 2, 3, 2, 1])  # Duplicaten worden verwijderd
+print(getallen)  # {1, 2, 3}
+
+# Set van string
+letters = set("hallo")  # Elke letter één keer
+print(letters)  # {'l', 'o', 'h', 'a'}</code></pre>
+
+      <h3>Set operaties</h3>
+      <pre><code class="language-python">set_a = {1, 2, 3, 4}
+set_b = {3, 4, 5, 6}
+
+# Union (vereniging) - alle elementen uit beide sets
+print("Union:", set_a | set_b)        # {1, 2, 3, 4, 5, 6}
+print("Union:", set_a.union(set_b))   # {1, 2, 3, 4, 5, 6}
+
+# Intersection (doorsnede) - elementen die in beide sets zitten
+print("Intersection:", set_a & set_b)           # {3, 4}
+print("Intersection:", set_a.intersection(set_b))  # {3, 4}
+
+# Difference (verschil) - elementen in A maar niet in B
+print("Difference A-B:", set_a - set_b)         # {1, 2}
+print("Difference B-A:", set_b - set_a)         # {5, 6}
+
+# Symmetric difference - elementen in A of B maar niet in beide
+print("Symmetric diff:", set_a ^ set_b)         # {1, 2, 5, 6}</code></pre>
+
+      <h3>Set methodes</h3>
+      <pre><code class="language-python">fruit = {"appel", "banaan", "kers"}
+
+# Element toevoegen
+fruit.add("druif")
+print(fruit)  # {'kers', 'druif', 'appel', 'banaan'}
+
+# Meerdere elementen toevoegen
+fruit.update(["mango", "peer"])
+print(fruit)  # {'kers', 'druif', 'peer', 'mango', 'appel', 'banaan'}
+
+# Element verwijderen
+fruit.remove("banaan")  # Error als element niet bestaat
+print(fruit)
+
+fruit.discard("appel")  # Geen error als element niet bestaat
+print(fruit)
+
+# Willekeurig element verwijderen
+willekeurig = fruit.pop()
+print(f"Verwijderd: {willekeurig}")
+
+# Set leegmaken
+fruit.clear()
+print(fruit)  # set()</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Dictionary Comprehensions</h2>
+
+      <h3>Basis dictionary comprehension</h3>
+      <pre><code class="language-python"># Traditionele manier
+kwadraten = {}
+for i in range(1, 6):
+    kwadraten[i] = i ** 2
+print(kwadraten)  # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+# Met comprehension
+kwadraten = {i: i**2 for i in range(1, 6)}
+print(kwadraten)  # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</code></pre>
+
+      <h3>Met voorwaarden</h3>
+      <pre><code class="language-python"># Alleen even getallen
+even_kwadraten = {i: i**2 for i in range(1, 11) if i % 2 == 0}
+print(even_kwadraten)  # {2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
+
+# Omgekeerde mapping
+namen = ["Lucas", "Joris", "Emma"]
+naam_lengtes = {naam: len(naam) for naam in namen}
+print(naam_lengtes)  # {'Lucas': 5, 'Joris': 5, 'Emma': 4}</code></pre>
+
+      <h3>Uit bestaande dictionary</h3>
+      <pre><code class="language-python">studenten = {
+    "Lucas": 8.5,
+    "Joris": 7.2,
+    "Emma": 9.1,
+    "Anna": 6.8
+}
+
+# Alleen geslaagde studenten
+geslaagd = {naam: cijfer for naam, cijfer in studenten.items() if cijfer >= 7.0}
+print(geslaagd)  # {'Lucas': 8.5, 'Joris': 7.2, 'Emma': 9.1}
+
+# Cijfers naar letters
+def cijfer_naar_letter(cijfer):
+    if cijfer >= 9.0: return "A"
+    elif cijfer >= 8.0: return "B"
+    elif cijfer >= 7.0: return "C"
+    else: return "D"
+
+letters = {naam: cijfer_naar_letter(cijfer) for naam, cijfer in studenten.items()}
+print(letters)  # {'Lucas': 'B', 'Joris': 'C', 'Emma': 'A', 'Anna': 'D'}</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-filter" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Set Comprehensions</h3>
+        <p>Unieke verzamelingen maken</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Set Comprehensions</h2>
+
+      <h3>Basis set comprehension</h3>
+      <pre><code class="language-python"># Traditionele manier
+kwadraten = set()
+for i in range(1, 6):
+    kwadraten.add(i ** 2)
+print(kwadraten)  # {1, 4, 9, 16, 25}
+
+# Met comprehension
+kwadraten = {i**2 for i in range(1, 6)}
+print(kwadraten)  # {1, 4, 9, 16, 25}</code></pre>
+
+      <h3>Met voorwaarden</h3>
+      <pre><code class="language-python"># Even kwadraten
+even_kwadraten = {i**2 for i in range(1, 11) if i % 2 == 0}
+print(even_kwadraten)  # {4, 16, 36, 64, 100}
+
+# Unieke eerste letters
+namen = ["Lucas", "Joris", "Emma", "Anna", "Lisa"]
+eerste_letters = {naam[0] for naam in namen}
+print(eerste_letters)  # {'L', 'J', 'E', 'A'}</code></pre>
+
+      <h3>Praktische toepassingen</h3>
+      <pre><code class="language-python"># Unieke woorden uit tekst
+tekst = "het huis is groot en het huis is mooi"
+woorden = tekst.split()
+unieke_woorden = {woord.lower() for woord in woorden}
+print(unieke_woorden)  # {'het', 'huis', 'is', 'groot', 'en', 'mooi'}
+
+# Getallen die deelbaar zijn door 2, 3 of 5
+getallen = {i for i in range(1, 21) if i % 2 == 0 or i % 3 == 0 or i % 5 == 0}
+print(getallen)  # {2, 3, 4, 5, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20}
+
+# Lengtes van woorden
+woorden = ["Python", "is", "een", "geweldige", "programmeertaal"]
+woord_lengtes = {len(woord) for woord in woorden}
+print(woord_lengtes)  # {2, 3, 6, 9, 18}</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktijkopdracht</h2>
+
+      <h3>Oefening 1: Telefoonboek</h3>
+      <p>Maak een telefoonboek systeem dat:</p>
+      <ul>
+        <li>Contacten kan toevoegen/bewerken/verwijderen</li>
+        <li>Op naam kan zoeken</li>
+        <li>Alle contacten kan tonen</li>
+        <li>Contacten kan exporteren als dictionary</li>
+      </ul>
+
+      <h3>Oefening 2: Woordenteller</h3>
+      <p>Schrijf een programma dat:</p>
+      <ul>
+        <li>Tekst splitst in woorden</li>
+        <li>Telt frequentie van elk woord</li>
+        <li>Meest voorkomende woorden vindt</li>
+        <li>Woorden sorteert op frequentie</li>
+      </ul>
+
+      <h3>Oefening 3: Studenten database</h3>
+      <p>Creëer een database voor:</p>
+      <ul>
+        <li>Studenten met meerdere vakken en cijfers</li>
+        <li>Gemiddelden per student en per vak</li>
+        <li>Toppresteerders vinden</li>
+        <li>Rapporten genereren</li>
+      </ul>
+
+      <h3>Oefening 4: Set operaties</h3>
+      <p>Maak functies voor:</p>
+      <ul>
+        <li>Unieke elementen vinden in twee lijsten</li>
+        <li>Gemeenschappelijke elementen vinden</li>
+        <li>Elementen die alleen in één lijst staan</li>
+        <li>Woordenboek maken van lijsten</li>
+      </ul>
+
+      <a href="
+        class="volgende-les">Volgende Les: File Handling <i class="fa fa-arrow-right"></i></a>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>JavaScript Lessen</h4>
+        <ul>
+          <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+          <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+          <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+          <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+          <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

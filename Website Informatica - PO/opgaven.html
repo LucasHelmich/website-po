@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opgaven & Toetsen</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+  <style>
+    .opgaven-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .opgave-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      color: var(--text-color);
+    }
+
+    .opgave-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent-color);
+    }
+
+    .opgave-card h3 {
+      color: var(--title-color);
+      margin-top: 0;
+      font-family: "Orbitron";
+    }
+
+    .opgave-card .niveau {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .opgave-card .beschrijving {
+      font-size: 14px;
+      margin: 15px 0;
+      color: var(--text-color);
+    }
+
+    .start-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-family: "Orbitron";
+    }
+
+    .start-btn:hover {
+      background: var(--title-color);
+      transform: scale(1.05);
+    }
+
+    /* Quiz Modal */
+    .quiz-modal {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .quiz-modal.show {
+      display: flex;
+    }
+
+    .quiz-content {
+      background: var(--bg-color);
+      border: 2px solid var(--accent-color);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 30px;
+      color: var(--text-color);
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 15px;
+    }
+
+    .quiz-header h2 {
+      color: var(--title-color);
+      margin: 0;
+      font-family: "Orbitron";
+    }
+
+    .quiz-timer {
+      background: var(--card-bg);
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+
+    .quiz-progress {
+      margin-bottom: 20px;
+      padding: 10px;
+      background: var(--container-bg);
+      border-radius: 8px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .question.hidden {
+      display: none;
+    }
+
+    .question h4 {
+      color: var(--title-color);
+      margin-top: 0;
+    }
+
+    .question-type {
+      font-size: 12px;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .multiple-choice {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .choice {
+      padding: 10px 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--light-card-bg);
+      color: var(--text-color);
+    }
+
+    .choice:hover {
+      border-color: var(--accent-color);
+      background: var(--hover-bg);
+    }
+
+    .choice input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .code-input {
+      background: #1a1a1a;
+      color: #00ff00;
+      padding: 15px;
+      border: 2px solid var(--accent-color);
+      border-radius: 6px;
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      width: 100%;
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .code-hint {
+      font-size: 12px;
+      color: var(--accent-color);
+      margin-top: 8px;
+      padding: 8px;
+      background: var(--hover-bg);
+      border-radius: 4px;
+    }
+
+    .test-result {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .test-result.success {
+      display: block;
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .test-result.error {
+      display: block;
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .test-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--container-bg);
+      color: var(--text-color);
+      font-family: "Roboto";
+      margin-top: 10px;
+    }
+
+    .quiz-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .btn-prev, .btn-next, .btn-submit, .btn-close {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: "Orbitron";
+      transition: all 0.3s ease;
+    }
+
+    .btn-prev, .btn-next {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 2px solid var(--border-color);
+    }
+
+    .btn-prev:hover, .btn-next:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .btn-submit {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .btn-submit:hover {
+      background: var(--title-color);
+    }
+
+    .btn-close {
+      background: var(--border-color);
+      color: var(--text-color);
+    }
+
+    .btn-close:hover {
+      background: var(--accent-color);
+    }
+
+    /* Results Screen */
+    .quiz-results {
+      text-align: center;
+    }
+
+    .score-display {
+      font-size: 48px;
+      color: var(--accent-color);
+      font-weight: bold;
+      margin: 20px 0;
+      font-family: "Orbitron";
+    }
+
+    .result-message {
+      font-size: 20px;
+      margin: 15px 0;
+      color: var(--title-color);
+    }
+
+    .security-warning {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 0, 0, 0.8);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      z-index: 4000;
+      display: none;
+    }
+
+    .security-warning.show {
+      display: block;
+    }
+
+    .review-section {
+      margin-top: 20px;
+      padding: 15px;
+      background: var(--hover-bg);
+      border-left: 4px solid var(--accent-color);
+      border-radius: 6px;
+    }
+
+    .review-header {
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .model-answer {
+      background: var(--card-bg);
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      font-family: 'Courier New', monospace;
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .review-explanation {
+      padding: 10px;
+      background: var(--card-bg);
+      border-radius: 4px;
+      margin-bottom: 10px;
+      color: var(--text-color);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .review-result {
+      padding: 10px 15px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .review-result.correct {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .review-result.incorrect {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .correct-answer {
+      background: #d4edda !important;
+      border-color: #28a745 !important;
+    }
+
+    .incorrect-answer {
+      background: #f8d7da !important;
+      border-color: #dc3545 !important;
+    }
+
+    .correct-choice {
+      background: #d4edda;
+      border: 1px solid #28a745;
+      border-radius: 4px;
+      padding: 8px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .incorrect-choice {
+      background: #f8d7da;
+      border: 1px solid #dc3545;
+      border-radius: 4px;
+      padding: 8px;
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="active"><a href="opgaven.html">Opgaven</a></div>
+      <div class="navbar-button">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">Opgaven & Toetsen</h1>
+
+  <div class="opgaven-container" id="opgavenContainer"></div>
+
+  <!-- Quiz Modal -->
+  <div id="quizModal" class="quiz-modal">
+    <div class="quiz-content">
+      <div class="quiz-header">
+        <h2 id="quizTitel">Toets</h2>
+        <div>
+          <div class="quiz-timer">⏱️ <span id="timer">00:00</span></div>
+        </div>
+      </div>
+
+      <div class="quiz-progress">
+        <div id="progressText">Vraag 1 van 5</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div id="questionsContainer"></div>
+
+      <div class="quiz-buttons">
+        <button class="btn-close" onclick="closeQuiz()">Afsluiten</button>
+        <button class="btn-prev" onclick="previousQuestion()" id="prevBtn">← Vorige</button>
+        <button class="btn-next" onclick="nextQuestion()" id="nextBtn">Volgende →</button>
+        <button class="btn-submit" onclick="submitQuiz()" id="submitBtn">Inleveren</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="security-warning" id="securityWarning">
+    ⚠️ Je kan niet switchen tijdens de toets!
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+      <div class="footer-links">
+      <h4>HTML Lessen</h4>
+      <ul>
+        <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+        <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+        <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>CSS Lessen</h4>
+      <ul>
+        <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+        <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+        <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+        <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+    </div>
+  </footer>
+
+  <script src="./JavaScript/QuizManager.js"></script>
+  <script src="./JavaScript/CodeValidator.js"></script>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

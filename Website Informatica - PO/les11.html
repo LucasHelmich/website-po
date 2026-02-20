@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Les 11: Geavanceerd</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">JavaScript Les 11: Geavanceerd</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 11?</h3>
+      <ul>
+        <li>Callbacks en hoe functies functioneren</li>
+        <li>Promises en .then()</li>
+        <li>Async/await syntax</li>
+        <li>Try-catch voor error handling</li>
+        <li>Geavanceerde loops (forEach, map, filter, reduce)</li>
+        <li>Destructuring en spread operator</li>
+        <li>Modules en module imports</li>
+      </ul>
+      <h3>Aan het eind van les 11 kun je:</h3>
+      <ul>
+        <li>Geavanceerde JavaScript technieken toepassen</li>
+        <li>Callbacks en promises begrijpen</li>
+        <li>Asynchrone code schrijven</li>
+        <li>Fouten afhandelen met try-catch</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-rocket" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Geavanceerd</h3>
+        <p>JavaScript Pro niveau</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat is localStorage?</h2>
+      <p>
+        <strong>localStorage</strong> is <strong>geheugen van de browser</strong> waar je data kunt opslaan. Deze data blijft staan totdat je het verwijdert!
+      </p>
+
+      <p>Voordelen:</p>
+      <ul>
+        <li>Data blijft bewaard na het sluiten van de browser</li>
+        <li>Elke website heeft zijn eigen aparte opslagruimte</li>
+        <li>Eenvoudig te gebruiken</li>
+        <li>Tot enkele MB per website opslag</li>
+      </ul>
+
+      <p>Wat je kan opslaan:</p>
+      <ul>
+        <li>✅ Strings (tekst)</li>
+        <li>✅ JSON (gestructureerde data)</li>
+        <li>✅ User voorkeur (thema, instellingen)</li>
+        <li>✅ Formuliergegevens</li>
+        <li>❌ Gevoelige data (wachtwoorden, tokens)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-save" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Opslaan & Ophalen</h3>
+        <p>Data persisteren in browser</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Data opslaan en ophalen</h2>
+
+      <h3>Data opslaan met setItem()</h3>
+      <pre><code class="language-javascript">// Opslaan
+localStorage.setItem('naam', 'Lucas');
+localStorage.setItem('leeftijd', '16');
+localStorage.setItem('stad', 'Amsterdam');</code></pre>
+
+      <h3>Data ophalen met getItem()</h3>
+      <pre><code class="language-javascript">// Ophalen
+let naam = localStorage.getItem('naam');
+console.log(naam);  // Output: Lucas
+
+let leeftijd = localStorage.getItem('leeftijd');
+console.log(leeftijd);  // Output: 16</code></pre>
+
+      <h3>Controleren of iets bestaat</h3>
+      <pre><code class="language-javascript">if (localStorage.getItem('naam') !== null) {
+  console.log("Er is een naam opgeslagen!");
+} else {
+  console.log("Geen naam gevonden");
+}</code></pre>
+
+      <h3>Data verwijderen</h3>
+      <pre><code class="language-javascript">// Eén item verwijderen
+localStorage.removeItem('naam');
+
+// Alles verwijderen
+localStorage.clear();</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>JSON - Data structureren</h2>
+
+      <p>
+        <strong>JSON (JavaScript Object Notation)</strong> is een formaat om gestructureerde data als tekst op te slaan.
+      </p>
+
+      <h3>Object naar JSON</h3>
+      <pre><code class="language-javascript">// Object
+let persoon = {
+  naam: "Lucas",
+  leeftijd: 16,
+  stad: "Amsterdam"
+};
+
+// Omzetten naar JSON (string)
+let jsonString = JSON.stringify(persoon);
+console.log(jsonString);
+// Output: {"naam":"Lucas","leeftijd":16,"stad":"Amsterdam"}</code></pre>
+
+      <h3>JSON naar Object</h3>
+      <pre><code class="language-javascript">// JSON string
+let jsonString = '{"naam":"Joris","leeftijd":17}';
+
+// Omzetten naar object
+let persoon = JSON.parse(jsonString);
+console.log(persoon.naam);  // Output: Joris</code></pre>
+
+      <h3>Arrays naar JSON</h3>
+      <pre><code class="language-javascript">// Array
+let getallen = [1, 2, 3, 4, 5];
+
+// Als JSON
+let json = JSON.stringify(getallen);
+console.log(json);  // Output: [1,2,3,4,5]</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-code" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>JSON & Objecten</h3>
+        <p>Complexe data opslaan</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Objecten in localStorage opslaan</h2>
+
+      <h3>Het probleem</h3>
+      <pre><code class="language-javascript">let gebruiker = { naam: "Lucas", leeftijd: 16 };
+
+// Dit werkt NIET goed:
+localStorage.setItem('gebruiker', gebruiker);  // Wordt "[object Object]"!
+
+// Ophalen geeft geen object terug
+let opgeslagen = localStorage.getItem('gebruiker');
+console.log(opgeslagen);  // "[object Object]" - niet bruikbaar!</code></pre>
+
+      <h3>De oplossing: JSON stringfy/parse</h3>
+      <pre><code class="language-javascript">let gebruiker = { naam: "Lucas", leeftijd: 16 };
+
+// Opslaan als JSON string
+localStorage.setItem('gebruiker', JSON.stringify(gebruiker));
+
+// Ophalen en omzetten naar object
+let opgeslagen = localStorage.getItem('gebruiker');
+let gebruikerObject = JSON.parse(opgeslagen);
+
+console.log(gebruikerObject.naam);  // Lucas
+console.log(gebruikerObject.leeftijd);  // 16</code></pre>
+
+      <h3>Omgaan met lege data</h3>
+      <pre><code class="language-javascript">function getUser() {
+  let data = localStorage.getItem('gebruiker');
+  
+  if (data === null) {
+    return { naam: "Anoniem", leeftijd: 0 };  // Default waarde
+  }
+  
+  return JSON.parse(data);
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktische voorbeelden</h2>
+
+      <h3>1. Dark mode voorkeur onthouden</h3>
+      <pre><code class="language-javascript">// Opslaan
+function saveDarkMode(isDark) {
+  localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+}
+
+// Laden
+function loadDarkMode() {
+  let isDark = localStorage.getItem('darkMode') === 'true';
+  return isDark;
+}</code></pre>
+
+      <h3>2. Todo-lijst opslaan</h3>
+      <pre><code class="language-javascript">// Opslaan
+function saveTodos(todos) {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+// Laden
+function loadTodos() {
+  let data = localStorage.getItem('todos');
+  return data ? JSON.parse(data) : [];
+}
+
+// Toevoegen
+let todos = loadTodos();
+todos.push("Huiswerk maken");
+saveTodos(todos);</code></pre>
+
+      <h3>3. Inloggegevens voorkeur</h3>
+      <pre><code class="language-javascript">// Formulier
+function onSubmit() {
+  let naam = document.getElementById('naam').value;
+  let email = document.getElementById('email').value;
+  
+  let gegevens = { naam, email };
+  localStorage.setItem('profile', JSON.stringify(gegevens));
+  
+  alert('Gegevens opgeslagen!');
+}
+
+// Laden bij pagina start
+window.addEventListener('load', function() {
+  let gegevens = localStorage.getItem('profile');
+  if (gegevens) {
+    let data = JSON.parse(gegevens);
+    document.getElementById('naam').value = data.naam;
+    document.getElementById('email').value = data.email;
+  }
+});</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Debuggen - localStorage inspecteren</h2>
+
+      <h3>Data weergeven in console</h3>
+      <pre><code class="language-javascript">// Alles in localStorage zien
+console.log(localStorage);
+
+// Key-value pair weergeven
+for (let i = 0; i &lt; localStorage.length; i++) {
+  let key = localStorage.key(i);
+  let value = localStorage.getItem(key);
+  console.log(`${key}: ${value}`);
+}</code></pre>
+
+      <h3>In browser inspecteren</h3>
+      <p>
+        <strong>DevTools:</strong> F12 → Application → Storage → Local Storage
+      </p>
+
+      <p>
+        Hier kun je al je opgeslagen data zien en zelfs handmatig verwijderen!
+      </p>
+
+      <h3>Voorkomen van fouten</h3>
+      <ul>
+        <li><strong>null</strong> - Item bestaat niet, gebruik getItem() result controleren</li>
+        <li><strong>"[object Object]"</strong> - Vergeten JSON.stringify() te gebruiken</li>
+        <li><strong>Parse fout</strong> - JSON is niet correct, controleer syntax</li>
+        <li><strong>Quota exceeded</strong> - Te veel data opgeslagen (zelden)</li>
+      </ul>
+        
+      
+     
+     
+
+    
+        <a href="les12.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+      
+       
+    </div>
+    </div>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Les 3: Afbeeldingen toevoegen</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+<script src="./JavaScript/Searchbar.js"></script>
+<script src="./JavaScript/ThemeToggle.js"></script>
+<script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">HTML Les 3: Afbeeldingen toevoegen</h1>
+
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 3?</h3>
+      <ul>
+        <li>Hoe de &lt;img&gt;-tag werkt</li>
+        <li>Wat attributen zijn</li>
+        <li>Hoe je het juiste bestandspad gebruikt</li>
+        <li>Waarom alt-tekst belangrijk is</li>
+        <li>Hoe je afbeeldingen combineert met tekst</li>
+      </ul>
+      <h3>Aan het eind van les 3 kun je:</h3>
+      <ul>
+        <li>Een afbeelding toevoegen met de &lt;img&gt;-tag</li>
+        <li>Het verschil uitleggen tussen een lokaal pad en een online afbeelding</li>
+        <li>Een duidelijke alt-tekst schrijven</li>
+        <li>De grootte van een afbeelding aanpassen</li>
+        <li>Afbeeldingen logisch plaatsen tussen koppen en paragrafen</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>De &lt;img&gt;-tag</h2>
+      <p>De <code>&lt;img&gt;</code>-tag plaats je om een afbeelding op je pagina te zetten. Deze tag heeft geen sluiting.</p>
+      <p>Voorbeeld:</p>
+      <p><code>&lt;img src="cat.jpg" alt="Een schattige kat"&gt;</code></p>
+
+      <h2>Het src-attribuut</h2>
+      <p>Het src-attribuut geeft aan waar de afbeelding staat:</p>
+      <ul>
+        <li><code>cat.jpg</code> → afbeelding in dezelfde map</li>
+        <li><code>images/cat.jpg</code> → afbeelding in een submap</li>
+      </ul>
+
+      <h2>Het alt-attribuut</h2>
+      <p>Het alt-attribuut is verplicht en belangrijk:</p>
+      <ul>
+        <li>Wordt getoond als de afbeelding niet laadt</li>
+        <li>Wordt voorgelezen door schermlezers</li>
+        <li>Helpt zoekmachines om de inhoud te begrijpen</li>
+      </ul>
+    </div>
+  </div>
+
+      <div class="tekst-hoofd-container">
+      <div class="tekst-links-container">
+        <h2>Grootte aanpassen</h2>
+        <p>Je kunt de breedte en hoogte van een afbeelding instellen met de attributen <code>width</code> en <code>height</code>. De hoogte wordt automatisch geschaald als je alleen de breedte instelt.</p>
+
+        <h2>Online afbeeldingen</h2>
+        <p>Afbeeldingen kunnen ook van het internet komen, bijvoorbeeld:</p>
+
+        <h2>Afbeeldingen en tekst combineren</h2>
+        <p>Je kunt afbeeldingen plaatsen tussen koppen en paragrafen om je tekst visueel te ondersteunen.</p>
+
+        <h2>Veelgemaakte fouten</h2>
+        <ul>
+          <li>Geen <code>alt</code>-tekst gebruiken</li>
+          <li>Verkeerd bestandspad</li>
+          <li>Afbeeldingen te groot gebruiken</li>
+        </ul>
+      </div>
+      </div>
+
+      <div class="tekst-hoofd-container">
+      <div class="tekst-links-container">
+        <h2>Eindopdracht Les 1 t/m 3</h2>
+        <p>
+        Maak een volledige webpagina waarin je laat zien dat je de basis van HTML beheerst, tekst goed kunt structureren en afbeeldingen kunt toevoegen.
+        </p>
+
+        <h2>Eisen</h2>
+        <ul>
+          <li>Een titel met <code>&lt;h1&gt;</code></li>
+          <li>Minstens twee tussenkopjes met <code>&lt;h2&gt;</code></li>
+          <li>Minstens drie paragrafen met <code>&lt;p&gt;</code></li>
+          <li>Minstens één regelafbreking met <code>&lt;br&gt;</code></li>
+          <li>Belangrijke woorden benadrukken met <code>&lt;strong&gt;</code> of <code>&lt;em&gt;</code></li>
+          <li>Een ongeordende lijst (<code>&lt;ul&gt;</code>)</li>
+          <li>Een geordende lijst (<code>&lt;ol&gt;</code>)</li>
+          <li>Minstens één afbeelding toevoegen met <code>&lt;img&gt;</code> en een correcte <code>alt</code>-tekst</li>
+          <li>De afbeelding moet een breedte of hoogte hebben ingesteld</li>
+        </ul>
+
+        <h2>Werkwijze</h2>
+        <ol>
+          <li>Open een nieuw HTML-bestand of gebruik een bestaand bestand van les 1 of 2</li>
+          <li>Typ de basisstructuur van een HTML-pagina</li>
+          <li>Voeg de titel, koppen, paragrafen, lijsten en afbeeldingen toe volgens de eisen</li>
+          <li>Controleer in de browser of alles correct wordt weergegeven</li>
+        </ol>
+
+        <h2>Extra uitdaging</h2>
+        <ul>
+          <li>Probeer de afbeelding logisch tussen tekst te plaatsen</li>
+          <li>Gebruik zowel een lokale afbeelding als een online afbeelding</li>
+          <li>Zorg dat je pagina overzichtelijk en netjes is</li>
+        </ul>
+
+        <h2>Wat laat je zien?</h2>
+        <ul>
+          <li>Dat je de basisstructuur van HTML begrijpt</li>
+          <li>Dat je tekst kunt structureren met koppen, paragrafen, lijsten en regelafbrekingen</li>
+          <li>Dat je tekst correct kunt benadrukken</li>
+          <li>Dat je afbeeldingen correct kunt toevoegen met alt-tekst en attributen</li>
+          <li>Dat je een leesbare en overzichtelijke webpagina kunt maken</li>
+        </ul>
+
+        </div>
+        </div>
+
+        <div class="button">
+      <a href="les4.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+  </div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <p>&copy; 2026 Lucas & Joris </p>
+      <p>Alle rechten voorbehouden.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>HTML Lessen</h4>
+      <ul>
+        <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+        <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+        <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>CSS Lessen</h4>
+      <ul>
+        <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+        <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+        <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+</html>

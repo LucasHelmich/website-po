@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Les 19: File Handling</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">Python Les 19: File Handling</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 7?</h3>
+      <ul>
+        <li>Bestanden openen en sluiten</li>
+        <li>Bestanden lezen</li>
+        <li>Bestanden schrijven</li>
+        <li>Context managers (with statement)</li>
+        <li>Bestandspaden en directories</li>
+        <li>CSV bestanden</li>
+        <li>JSON bestanden</li>
+      </ul>
+      <h3>Aan het eind van les 7 kun je:</h3>
+      <ul>
+        <li>Tekstbestanden lezen en schrijven</li>
+        <li>Bestanden veilig openen met context managers</li>
+        <li>CSV data verwerken</li>
+        <li>JSON data opslaan en laden</li>
+        <li>Bestandspaden beheren</li>
+        <li>Directory operaties uitvoeren</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-file" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>File I/O</h3>
+        <p>Bestanden lezen en schrijven</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Bestanden Openen en Sluiten</h2>
+      <p>
+        <strong>File handling</strong> is essentieel voor het opslaan en laden van data.
+        Python gebruikt het <code>open()</code> statement om bestanden te openen.
+      </p>
+
+      <h3>Bestand openen - basis</h3>
+      <pre><code class="language-python"># Bestand openen om te lezen
+bestand = open("voorbeeld.txt", "r")  # "r" = read mode
+
+# Bestand openen om te schrijven
+bestand = open("nieuw.txt", "w")      # "w" = write mode
+
+# Bestand openen om toe te voegen
+bestand = open("log.txt", "a")        # "a" = append mode
+
+# Bestand sluiten
+bestand.close()</code></pre>
+
+      <h3>File modes overzicht</h3>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <th style="border: 1px solid #ddd; padding: 8px;">Mode</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Beschrijving</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Gebruikt voor</th>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">"r"</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Read (lezen)</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Bestaande bestanden lezen</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">"w"</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Write (schrijven)</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Nieuwe bestanden maken/overschrijven</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">"a"</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Append (toevoegen)</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Data toevoegen aan bestaande bestanden</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">"x"</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Exclusive creation</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Nieuwe bestanden maken (fout als bestaat)</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">"r+"</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Read + Write</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Lezen en schrijven</td>
+        </tr>
+      </table>
+
+      <h3>Encoding specificeren</h3>
+      <pre><code class="language-python"># UTF-8 encoding (voor Nederlandse karakters)
+bestand = open("tekst.txt", "r", encoding="utf-8")
+
+# Windows-1252 encoding
+bestand = open("oud_bestand.txt", "r", encoding="cp1252")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-book-open" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Reading Files</h3>
+        <p>Bestanden lezen</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Bestanden Lezen</h2>
+
+      <h3>Volledig bestand lezen</h3>
+      <pre><code class="language-python"># Hele bestand in één keer lezen
+with open("voorbeeld.txt", "r", encoding="utf-8") as bestand:
+    inhoud = bestand.read()
+    print(inhoud)
+
+# Of regel voor regel
+with open("voorbeeld.txt", "r", encoding="utf-8") as bestand:
+    for regel in bestand:
+        print(regel.strip())  # strip() verwijdert \n</code></pre>
+
+      <h3>Regels lezen</h3>
+      <pre><code class="language-python"># Alle regels in een lijst
+with open("voorbeeld.txt", "r", encoding="utf-8") as bestand:
+    regels = bestand.readlines()
+    print(regels)
+
+# Eerste regel lezen
+with open("voorbeeld.txt", "r", encoding="utf-8") as bestand:
+    eerste_regel = bestand.readline()
+    print(f"Eerste regel: {eerste_regel.strip()}")
+
+# Meerdere regels lezen
+with open("voorbeeld.txt", "r", encoding="utf-8") as bestand:
+    regel1 = bestand.readline()
+    regel2 = bestand.readline()
+    print(f"Regel 1: {regel1.strip()}")
+    print(f"Regel 2: {regel2.strip()}")</code></pre>
+
+      <h3>Praktisch voorbeeld</h3>
+      <pre><code class="language-python">def tel_woorden(bestandsnaam):
+    """Telt het aantal woorden in een bestand"""
+    try:
+        with open(bestandsnaam, "r", encoding="utf-8") as bestand:
+            tekst = bestand.read()
+            woorden = tekst.split()
+            return len(woorden)
+    except FileNotFoundError:
+        return f"Bestand '{bestandsnaam}' niet gevonden"
+
+print(tel_woorden("voorbeeld.txt"))</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Bestanden Schrijven</h2>
+
+      <h3>Tekst schrijven</h3>
+      <pre><code class="language-python"># Bestand overschrijven
+with open("nieuw.txt", "w", encoding="utf-8") as bestand:
+    bestand.write("Dit is een nieuwe regel\n")
+    bestand.write("Nog een regel\n")
+
+# Data toevoegen aan bestaand bestand
+with open("log.txt", "a", encoding="utf-8") as bestand:
+    from datetime import datetime
+    nu = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    bestand.write(f"[{nu}] Programma gestart\n")</code></pre>
+
+      <h3>Meerdere regels schrijven</h3>
+      <pre><code class="language-python">regels = [
+    "Dit is regel 1",
+    "Dit is regel 2",
+    "Dit is regel 3"
+]
+
+with open("meerdere_regels.txt", "w", encoding="utf-8") as bestand:
+    for regel in regels:
+        bestand.write(regel + "\n")
+
+# Of gebruik writelines() (let op: geen automatische \n)
+with open("meerdere_regels2.txt", "w", encoding="utf-8") as bestand:
+    bestand.writelines(regel + "\n" for regel in regels)</code></pre>
+
+      <h3>Formatteren bij schrijven</h3>
+      <pre><code class="language-python">studenten = [
+    {"naam": "Lucas", "leeftijd": 16, "gemiddelde": 8.5},
+    {"naam": "Joris", "leeftijd": 17, "gemiddelde": 7.8},
+    {"naam": "Emma", "leeftijd": 16, "gemiddelde": 9.1}
+]
+
+with open("studenten.txt", "w", encoding="utf-8") as bestand:
+    bestand.write("Naam\tLeeftijd\tGemiddelde\n")
+    bestand.write("-" * 30 + "\n")
+
+    for student in studenten:
+        bestand.write(f"{student['naam']}\t{student['leeftijd']}\t\t{student['gemiddelde']}\n")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-shield" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Context Managers</h3>
+        <p>Veilig bestanden afhandelen</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Context Managers (with statement)</h2>
+
+      <h3>Probleem zonder context manager</h3>
+      <pre><code class="language-python"># Dit kan problemen veroorzaken!
+bestand = open("voorbeeld.txt", "r")
+inhoud = bestand.read()
+print(inhoud)
+# Vergeet bestand te sluiten!
+# bestand.close()  # Dit wordt vaak vergeten!</code></pre>
+
+      <h3>Oplossing met context manager</h3>
+      <pre><code class="language-python"># Bestand wordt automatisch gesloten
+with open("voorbeeld.txt", "r", encoding="utf-8") as bestand:
+    inhoud = bestand.read()
+    print(inhoud)
+# Bestand is hier automatisch gesloten
+
+print("Bestand is nu gesloten")</code></pre>
+
+      <h3>Voordelen van with statement</h3>
+      <ul>
+        <li><strong>Automatisch sluiten:</strong> Bestand wordt altijd gesloten, zelfs bij errors</li>
+        <li><strong>Minder code:</strong> Geen handmatige close() nodig</li>
+        <li><strong>Veiliger:</strong> Voorkomt resource leaks</li>
+        <li><strong>Leesbaarder:</strong> Duidelijk wanneer bestand gebruikt wordt</li>
+      </ul>
+
+      <h3>Meerdere bestanden tegelijk</h3>
+      <pre><code class="language-python">with open("input.txt", "r", encoding="utf-8") as input_file, \
+         open("output.txt", "w", encoding="utf-8") as output_file:
+
+    for regel in input_file:
+        # Verwerk regel (bijv. maak hoofdletters)
+        verwerkte_regel = regel.upper()
+        output_file.write(verwerkte_regel)</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Bestandspaden en Directories</h2>
+
+      <h3>OS module gebruiken</h3>
+      <pre><code class="language-python">import os
+
+# Huidige directory
+print("Huidige directory:", os.getcwd())
+
+# Directory veranderen
+os.chdir("..")  # Ga naar parent directory
+print("Nieuwe directory:", os.getcwd())
+
+# Bestandspaden samenstellen
+pad = os.path.join("data", "bestanden", "voorbeeld.txt")
+print("Volledig pad:", pad)
+
+# Controleren of bestand bestaat
+if os.path.exists("voorbeeld.txt"):
+    print("Bestand bestaat")
+else:
+    print("Bestand bestaat niet")
+
+# Bestandsgrootte
+if os.path.exists("voorbeeld.txt"):
+    grootte = os.path.getsize("voorbeeld.txt")
+    print(f"Bestandsgrootte: {grootte} bytes")</code></pre>
+
+      <h3>Directory operaties</h3>
+      <pre><code class="language-python">import os
+
+# Directory maken
+os.makedirs("nieuwe_map/submap", exist_ok=True)
+
+# Inhoud van directory tonen
+bestanden = os.listdir(".")
+print("Bestanden in huidige directory:")
+for bestand in bestanden:
+    if os.path.isfile(bestand):
+        print(f"  📄 {bestand}")
+    elif os.path.isdir(bestand):
+        print(f"  📁 {bestand}")
+
+# Bestand verwijderen
+if os.path.exists("tijdelijk.txt"):
+    os.remove("tijdelijk.txt")
+
+# Directory verwijderen (alleen lege directories)
+if os.path.exists("lege_map"):
+    os.rmdir("lege_map")</code></pre>
+
+      <h3>Pathlib (modern alternatief)</h3>
+      <pre><code class="language-python">from pathlib import Path
+
+# Huidige directory
+huidig = Path.cwd()
+print("Huidige directory:", huidig)
+
+# Bestandspaden
+data_pad = Path("data") / "bestanden" / "voorbeeld.txt"
+print("Data pad:", data_pad)
+
+# Controleren of bestaat
+if data_pad.exists():
+    print("Bestand bestaat")
+    print(f"Grootte: {data_pad.stat().st_size} bytes")
+
+# Alle .txt bestanden vinden
+txt_bestanden = list(Path(".").glob("*.txt"))
+print("TXT bestanden:", txt_bestanden)</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-table" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>CSV Files</h3>
+        <p>Comma-Separated Values</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>CSV Bestanden</h2>
+
+      <h3>CSV lezen</h3>
+      <pre><code class="language-python">import csv
+
+# CSV bestand lezen
+with open("studenten.csv", "r", encoding="utf-8") as csvfile:
+    reader = csv.reader(csvfile, delimiter=";")
+
+    for rij in reader:
+        print(rij)
+
+# Met header
+with open("studenten.csv", "r", encoding="utf-8") as csvfile:
+    reader = csv.DictReader(csvfile, delimiter=";")
+    for rij in reader:
+        print(f"{rij['naam']}: {rij['leeftijd']} jaar")</code></pre>
+
+      <h3>CSV schrijven</h3>
+      <pre><code class="language-python">import csv
+
+studenten = [
+    ["naam", "leeftijd", "klas"],
+    ["Lucas", 16, "4VWO"],
+    ["Joris", 17, "5VWO"],
+    ["Emma", 16, "4VWO"]
+]
+
+with open("nieuwe_studenten.csv", "w", newline="", encoding="utf-8") as csvfile:
+    writer = csv.writer(csvfile, delimiter=";")
+    for student in studenten:
+        writer.writerow(student)
+
+# Met dictionary
+studenten_dict = [
+    {"naam": "Lucas", "leeftijd": 16, "klas": "4VWO"},
+    {"naam": "Joris", "leeftijd": 17, "klas": "5VWO"}
+]
+
+with open("studenten_dict.csv", "w", newline="", encoding="utf-8") as csvfile:
+    veldnamen = ["naam", "leeftijd", "klas"]
+    writer = csv.DictWriter(csvfile, fieldnames=veldnamen, delimiter=";")
+
+    writer.writeheader()
+    for student in studenten_dict:
+        writer.writerow(student)</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>JSON Bestanden</h2>
+
+      <h3>JSON importeren</h3>
+      <pre><code class="language-python">import json
+
+# JSON data
+student = {
+    "naam": "Lucas",
+    "leeftijd": 16,
+    "vakken": ["NL", "EN", "WK", "Bio"],
+    "cijfers": {
+        "NL": 8.5,
+        "EN": 7.8,
+        "WK": 9.1,
+        "Bio": 8.2
+    }
+}
+
+# Naar JSON string
+json_string = json.dumps(student, indent=2)
+print(json_string)
+
+# Naar bestand schrijven
+with open("student.json", "w", encoding="utf-8") as jsonfile:
+    json.dump(student, jsonfile, indent=2)</code></pre>
+
+      <h3>JSON lezen</h3>
+      <pre><code class="language-python">import json
+
+# Uit bestand lezen
+with open("student.json", "r", encoding="utf-8") as jsonfile:
+    geladen_student = json.load(jsonfile)
+
+print(f"Naam: {geladen_student['naam']}")
+print(f"Leeftijd: {geladen_student['leeftijd']}")
+print(f"Gemiddelde: {sum(geladen_student['cijfers'].values()) / len(geladen_student['cijfers']):.1f}")
+
+# Uit string lezen
+json_string = '{"naam": "Joris", "leeftijd": 17}'
+data = json.loads(json_string)
+print(data)</code></pre>
+
+      <h3>Complex JSON voorbeeld</h3>
+      <pre><code class="language-python">import json
+
+# Database van studenten
+database = {
+    "studenten": [
+        {
+            "id": 1,
+            "naam": "Lucas",
+            "vakken": [
+                {"naam": "Nederlands", "cijfer": 8.5},
+                {"naam": "Engels", "cijfer": 7.8}
+            ]
+        },
+        {
+            "id": 2,
+            "naam": "Joris",
+            "vakken": [
+                {"naam": "Nederlands", "cijfer": 7.2},
+                {"naam": "Engels", "cijfer": 8.9}
+            ]
+        }
+    ],
+    "laatst_bijgewerkt": "2024-01-15"
+}
+
+# Opslaan
+with open("studenten_database.json", "w", encoding="utf-8") as f:
+    json.dump(database, f, indent=2)
+
+# Laden en gemiddelde per student berekenen
+with open("studenten_database.json", "r", encoding="utf-8") as f:
+    db = json.load(f)
+
+for student in db["studenten"]:
+    cijfers = [vak["cijfer"] for vak in student["vakken"]]
+    gemiddelde = sum(cijfers) / len(cijfers)
+    print(f"{student['naam']}: {gemiddelde:.1f}")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktijkopdracht</h2>
+
+      <h3>Oefening 1: Tekst analyzer</h3>
+      <p>Maak een programma dat:</p>
+      <ul>
+        <li>Een tekstbestand inleest</li>
+        <li>Aantal woorden, regels en karakters telt</li>
+        <li>Meest voorkomende woorden vindt</li>
+        <li>Resultaten naar een nieuw bestand schrijft</li>
+      </ul>
+
+      <h3>Oefening 2: Studenten database</h3>
+      <p>Creëer een systeem dat:</p>
+      <ul>
+        <li>Studentengegevens opslaat in JSON</li>
+        <li>Nieuwe studenten kan toevoegen</li>
+        <li>Cijfers kan bijwerken</li>
+        <li>Rapporten kan genereren</li>
+      </ul>
+
+      <h3>Oefening 3: CSV verwerker</h3>
+      <p>Schrijf een programma voor:</p>
+      <ul>
+        <li>CSV bestanden inlezen</li>
+        <li>Data filteren en sorteren</li>
+        <li>Statistieken berekenen</li>
+        <li>Gefilterde data exporteren</li>
+      </ul>
+
+      <h3>Oefening 4: Backup systeem</h3>
+      <p>Maak een backup tool die:</p>
+      <ul>
+        <li>Bestanden kopieert naar backup directory</li>
+        <li>Versiebeheer implementeert</li>
+        <li>Alleen gewijzigde bestanden kopieert</li>
+        <li>Logbestand bijhoudt</li>
+      </ul>
+
+      <a href="les20.html" class="volgende-les">Volgende Les: Object-Oriented Programming <i class="fa fa-arrow-right"></i></a>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>JavaScript Lessen</h4>
+        <ul>
+          <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+          <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+          <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+          <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+          <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

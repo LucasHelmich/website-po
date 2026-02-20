@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Les 10: Data Opslaan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">JavaScript Les 10: Data Opslaan</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 10?</h3>
+      <ul>
+        <li>Wat localStorage is en hoe het werkt</li>
+        <li>Data opslaan met setItem()</li>
+        <li>Data ophalen met getItem()</li>
+        <li>Data verwijderen</li>
+        <li>JSON - JavaScript Object Notation</li>
+        <li>Objecten en arrays omzetten naar JSON</li>
+        <li>Praktische voorbeelden</li>
+      </ul>
+      <h3>Aan het eind van les 10 kun je:</h3>
+      <ul>
+        <li>Data opslaan met localStorage</li>
+        <li>Data terugvinden en gebruiken</li>
+        <li>JSON-gegevens opslaan</li>
+        <li>Persistente applicaties bouwen</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-database" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Data Opslaan</h3>
+        <p>LocalStorage & persistentie</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat is het DOM?</h2>
+      <p>
+        Het <strong>DOM (Document Object Model)</strong> is een representatie van je HTML-pagina als een boomstructuur. JavaScript kan deze boom manipuleren.
+      </p>
+      <p>
+        Als je HTML er zo uitziet:
+      </p>
+      <pre><code class="language-html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hallo&lt;/h1&gt;
+    &lt;p&gt;Dit is een paragraaf&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <p>
+        Dan ziet het DOM er als een boom uit met parent- en child-elementen. JavaScript kan elk deel van deze boom veranderen!
+      </p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-hand-o-right" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Selecteren</h3>
+        <p>Elementen vinden en selecteren</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Elementen selecteren</h2>
+      <p>
+        Als je een element wilt veranderen, moet je het eerst <strong>selecteren</strong>. Dit doe je met verschillende methoden:
+      </p>
+
+      <h3>1. getElementById() - Selecteren via ID</h3>
+      <pre><code class="language-javascript">let element = document.getElementById('mijnID');
+// Selecteert element met id="mijnID"</code></pre>
+
+      <h3>2. querySelector() - Selecteren via CSS selector</h3>
+      <pre><code class="language-javascript">let element = document.querySelector('.mijnClass');  // Klasse
+let element = document.querySelector('#mijnID');     // ID
+let element = document.querySelector('p');           // Tag
+let element = document.querySelector('div > p');    // Combinatie</code></pre>
+
+      <h3>3. getElementsByClassName() - Selecteren via klasse</h3>
+      <pre><code class="language-javascript">let elementen = document.getElementsByClassName('mijnClass');
+// Geeft alle elementen met die klasse terug!</code></pre>
+
+      <h3>4. querySelectorAll() - Alle matching elementen</h3>
+      <pre><code class="language-javascript">let allePs = document.querySelectorAll('p');
+// Selecteert alle &lt;p&gt; tags</code></pre>
+
+      <p><strong>Voorkeur:</strong> Gebruik querySelector/querySelectorAll - die zijn moderner en flexibeler!</p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Inhoud veranderen</h2>
+      <p>
+        Je kunt de inhoud van elementen veranderen op verschillende manieren:
+      </p>
+
+      <h3>innerHTML - HTML toevoegen</h3>
+      <pre><code class="language-javascript">let para = document.getElementById('myPara');
+para.innerHTML = "&lt;strong&gt;Nieuwe tekst!&lt;/strong&gt;";</code></pre>
+
+      <h3>textContent - Alleen tekst</h3>
+      <pre><code class="language-javascript">let para = document.getElementById('myPara');
+para.textContent = "Dit is veiligere tekst";</code></pre>
+
+      <h3>Verschil:</h3>
+      <ul>
+        <li><strong>innerHTML</strong> - Kan HTML tags bevatten (voorzichtig met veiligheid!)</li>
+        <li><strong>textContent</strong> - Alleen platte tekst, veiliger</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-paint-brush" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Stijlen</h3>
+        <p>Kleuren, lettertypen en opmaak</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Attributen en Stijlen wijzigen</h2>
+
+      <h3>Attributen wijzigen met setAttribute()</h3>
+      <pre><code class="language-javascript">let afbeelding = document.getElementById('myImage');
+afbeelding.setAttribute('src', 'nieuw-plaatje.jpg');
+afbeelding.setAttribute('alt', 'Een nieuw plaatje');</code></pre>
+
+      <h3>Attributen rechtstreeks wijzigen</h3>
+      <pre><code class="language-javascript">let link = document.getElementById('myLink');
+link.href = "https://google.com";
+link.title = "Ga naar Google";</code></pre>
+
+      <h3>Stijlen wijzigen</h3>
+      <pre><code class="language-javascript">let element = document.getElementById('myElement');
+element.style.color = 'red';
+element.style.backgroundColor = 'yellow';
+element.style.padding = '10px';
+element.style.fontSize = '20px';</code></pre>
+
+      <p><strong>Let op:</strong> CSS eigenschappen met koppeltekens (background-color) worden camelCase in JavaScript (backgroundColor)!</p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Klassen beheren</h2>
+      <p>
+        De beste manier om stijlen te wijzigen is door <strong>CSS klassen</strong> toe te voegen/te verwijderen:
+      </p>
+
+      <h3>classList.add() - Klasse toevoegen</h3>
+      <pre><code class="language-javascript">let element = document.getElementById('myElement');
+element.classList.add('active');</code></pre>
+
+      <h3>classList.remove() - Klasse verwijderen</h3>
+      <pre><code class="language-javascript">element.classList.remove('active');</code></pre>
+
+      <h3>classList.toggle() - Omschakelen</h3>
+      <pre><code class="language-javascript">// Voegt 'active' toe als het er niet is, verwijdert het als het er wel is
+element.classList.toggle('active');</code></pre>
+
+      <h3>CSS bestand</h3>
+      <pre><code class="language-css">.active {
+  background-color: green;
+  color: white;
+  padding: 10px;
+}</code></pre>
+
+      <p><strong>Voordeel:</strong> Verdeel logica (JavaScript) en stijlen (CSS) netjes!</p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-plus" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Elementen</h3>
+        <p>Nieuwe elementen maken en toevoegen</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Nieuwe elementen maken</h2>
+
+      <h3>createElement() - Nieuw element aanmaken</h3>
+      <pre><code class="language-javascript">let newPara = document.createElement('p');
+newPara.textContent = "Dit is een nieuw element!";
+newPara.className = "highlight";</code></pre>
+
+      <h3>appendChild() - Element toevoegen</h3>
+      <pre><code class="language-javascript">let container = document.getElementById('myContainer');
+container.appendChild(newPara);  // Voegt aan het einde toe</code></pre>
+
+      <h3>insertBefore() - Op specifieke plaats toevoegen</h3>
+      <pre><code class="language-javascript">let firstChild = container.firstChild;
+container.insertBefore(newPara, firstChild);  // Voegt bovenaan toe</code></pre>
+
+      <h3>Compleet voorbeeld:</h3>
+      <pre><code class="language-javascript">function addItem(text) {
+  let newLi = document.createElement('li');
+  newLi.textContent = text;
+  
+  let list = document.getElementById('myList');
+  list.appendChild(newLi);
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Elementen verwijderen</h2>
+
+      <h3>removeChild() - Verwijder de kindelement</h3>
+      <pre><code class="language-javascript">let parent = document.getElementById('parent');
+let child = document.getElementById('child');
+parent.removeChild(child);  // Verwijdert child uit parent</code></pre>
+
+      <h3>remove() - Verwijder jezelf</h3>
+      <pre><code class="language-javascript">let element = document.getElementById('myElement');
+element.remove();  // Verwijdert zichzelf direct</code></pre>
+
+      <h3>innerHTML = "" - Alle kinderen verwijderen</h3>
+      <pre><code class="language-javascript">let container = document.getElementById('myContainer');
+container.innerHTML = "";  // Verwijdert alles erin</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktisch voorbeeld: Todo-lijstje</h2>
+      <p>Hier een volledig voorbeeld van DOM manipulatie in actie:</p>
+
+      <pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;input type="text" id="todo-input" placeholder="Voer taak in"&gt;
+&lt;button onclick="addTodo()"&gt;Toevoegen&lt;/button&gt;
+&lt;ul id="todo-list"&gt;&lt;/ul&gt;</code></pre>
+
+      <pre><code class="language-javascript">// JavaScript
+function addTodo() {
+  let input = document.getElementById('todo-input');
+  let text = input.value;
+  
+  if (text === '') return;  // Niet leeg toevoegen
+  
+  // Maak nieuw element
+  let li = document.createElement('li');
+  li.textContent = text;
+  
+  // Voeg aan lijst toe
+  let list = document.getElementById('todo-list');
+  list.appendChild(li);
+  
+  // Maak input leeg
+  input.value = '';
+}</code></pre>
+
+      <p><strong>Dit doet:</strong> Voegt tekst toe aan een lijst, maakt input leeg, houdt alles netjes!</p>
+
+      <a href="les11.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

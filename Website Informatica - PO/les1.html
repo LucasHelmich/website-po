@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Les 1: HTML Basis</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+
+
+  <h1 class="les-titel">HTML Les 1: HTML Basis</h1>
+
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 1?</h3>
+      <ul>
+        <li>Wat HTML is en waar het voor wordt gebruikt</li>
+        <li>Hoe een webpagina werkt met een browser</li>
+        <li>Wat tags en elementen zijn</li>
+        <li>De basisstructuur van een HTML-document</li>
+        <li>Het verschil tussen <strong>&lt;head&gt;</strong> en <strong>&lt;body&gt;</strong></li>
+        <li>Hoe je een eerste simpele webpagina maakt</li>
+      </ul>
+      <h3>Aan het eind van les 1 kun je:</h3>
+      <ul>
+        <li>Uitleggen wat HTML betekent</li>
+        <li>Een HTML-document openen in de browser</li>
+        <li>De basisstructuur van een HTML-pagina herkennen</li>
+        <li>Een eenvoudige webpagina maken met tekst</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <img src="fotos/HTML5_logo_and_wordmark.png" id="html-logo" alt="html-logo">
+    </div>
+  </div>
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Wat is HTML?</h2>
+      <p>
+        HTML staat voor <strong>HyperText Markup Language</strong>. Het is de standaardtaal
+        die wordt gebruikt om webpagina's te maken. Met HTML geef je structuur aan de
+        inhoud van een website, zoals tekst, afbeeldingen en links.
+      </p>
+
+      <p>
+        HTML is <strong>geen programmeertaal</strong>, maar een opmaaktaal. Dat betekent dat
+        je ermee beschrijft <em>wat</em> iets is, bijvoorbeeld een titel of een paragraaf,
+        en niet <em>hoe</em> het eruitziet. Het uiterlijk wordt meestal geregeld met CSS.
+      </p>
+
+      <p>
+        Een browser, zoals Chrome of Firefox, leest de HTML-code en zet deze om in een
+        webpagina die je kunt bekijken.
+      </p>
+    </div> 
+
+  </div>
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-rechts-container">
+      <img src="fotos/htmlchart.webp" alt="html-chart">
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>HTML en de browser</h2>
+
+      <p>
+        Een browser, zoals Chrome, Firefox of Edge, leest HTML-bestanden en zet ze om in een
+        zichtbare webpagina. De browser leest HTML <strong>van boven naar beneden</strong>.
+      </p>
+
+      <p>
+        De browser begrijpt verschillende HTML-tags en weet daardoor welke onderdelen
+        belangrijk zijn, zoals koppen, paragrafen en afbeeldingen.
+      </p>
+
+      <h2>Tags en elementen</h2>
+
+      <p>
+        HTML gebruikt <strong>tags</strong> tussen hoekige haakjes (<strong>&lt; &gt;</strong>).
+        Samen vormen ze een <strong>element</strong> dat inhoud op een bepaalde manier
+        markeert of structureert.
+      </p>
+
+      <p>Voorbeeld van een paragraaf:</p>
+
+      <pre>
+      &lt;p&gt;Dit is een paragraaf&lt;/p&gt;
+      </pre>
+
+      <ul>
+        <li><strong>&lt;p&gt;</strong> is de openingstag</li>
+        <li><strong>&lt;/p&gt;</strong> is de sluitingstag</li>
+        <li>Alles ertussen is de inhoud</li>
+      </ul>
+
+      <p>
+        Sommige tags hebben geen sluiting, zoals <strong>&lt;br&gt;</strong> en
+        <strong>&lt;img&gt;</strong>.
+      </p>
+
+    </div>
+
+  </div>
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-links-container">
+      <h2>Basisstructuur van een HTML-pagina</h2>
+      <p>
+        Elke HTML-pagina begint met dezelfde vaste structuur. Deze structuur is nodig
+        zodat de browser weet hoe de pagina is opgebouwd.
+      </p>
+
+      <h2>Betekenis van de onderdelen</h2>
+
+      <ul>
+        <li>
+          <strong>&lt;!DOCTYPE html&gt;</strong> vertelt de browser dat dit een moderne
+          HTML5-pagina is
+        </li>
+        <li>
+          <strong>&lt;html&gt;</strong> is het hoofdelement van de pagina
+        </li>
+        <li>
+          <strong>&lt;head&gt;</strong> bevat informatie over de pagina die niet zichtbaar is
+        </li>
+        <li>
+          <strong>&lt;title&gt;</strong> bepaalt de titel in het tabblad van de browser
+        </li>
+        <li>
+          <strong>&lt;body&gt;</strong> bevat alle inhoud die zichtbaar is op de pagina
+        </li>
+      </ul>
+
+      <h2>Veelgemaakte fouten</h2>
+
+      <ul>
+        <li>Een sluitingstag vergeten</li>
+        <li>Tags verkeerd nesten, bijvoorbeeld een <strong>&lt;p&gt;</strong> in een
+            <strong>&lt;h1&gt;</strong></li>
+        <li>Het bestand opslaan als <strong>.txt</strong> in plaats van <strong>.html</strong></li>
+      </ul>
+
+    </div>
+
+    <div class="tekst-code-container">
+        <pre><code class="language-html">
+          &lt;!--Basis structuur van een HTML website--&gt;
+          &lt;!DOCTYPE html&gt;
+          &lt;html&gt;
+            &lt;head&gt;
+              &lt;title&gt;Mijn eerste webpagina&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;h1&gt;Welkom&lt;/h1&gt;
+              &lt;p&gt;Dit is een eenvoudige webpagina.&lt;/p&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;
+        </code></pre>
+    </div>
+
+  </div>
+  <!--Begin van nieuwe container.-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Eindopdracht les 1</h2>
+      <h3>Opdracht</h3>
+      <p>
+        In deze eindopdracht maak je een eenvoudige HTML-pagina. Hiermee laat je zien
+        dat je de basis van HTML begrijpt en correct kunt toepassen.
+      </p>
+
+      <h3>Eisen</h3>
+      <ul>
+        <li>Een correcte HTML-basisstructuur</li>
+        <li>Een titel in het tabblad met <strong>&lt;title&gt;</strong></li>
+        <li>Één hoofdkop met <strong>&lt;h1&gt;</strong></li>
+        <li>Minimaal twee paragrafen met <strong>&lt;p&gt;</strong></li>
+      </ul>
+
+      <h3>Wat moet je doen?</h3>
+      <ol>
+        <li>Maak een nieuw bestand aan met de naam <strong>eindopdracht.html</strong></li>
+        <li>Typ de HTML-structuur over</li>
+        <li>Vul de tekst in met je eigen woorden</li>
+        <li>Open het bestand in je browser</li>
+      </ol>
+
+      <h3>Voorbeeldstructuur</h3>
+
+      <pre>
+      <code>
+      &lt;!DOCTYPE html&gt;
+      &lt;html&gt;
+        &lt;head&gt;
+          &lt;title&gt;Eindopdracht les 1&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;h1&gt;Mijn eerste HTML-pagina&lt;/h1&gt;
+
+          &lt;p&gt;
+            Dit is mijn eindopdracht voor les 1. Op deze pagina laat ik zien
+            dat ik de basis van HTML begrijp.
+          &lt;/p&gt;
+
+          &lt;p&gt;
+            Ik weet nu hoe een HTML-pagina is opgebouwd en hoe een browser
+            deze leest.
+          &lt;/p&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;
+      </code>
+      </pre>
+
+    
+  
+
+ 
+      <a href="les2.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <p>&copy; 2026 Lucas & Joris </p>
+      <p>Alle rechten voorbehouden.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>HTML Lessen</h4>
+      <ul>
+        <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+        <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+        <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>CSS Lessen</h4>
+      <ul>
+        <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+        <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+        <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+        <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+</html>
+

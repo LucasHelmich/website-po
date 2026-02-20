@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Les 4: Basis CSS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">CSS Les 4: Basis CSS</h1>
+
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 4?</h3>
+
+      <ul>
+        <li>Wat CSS is en waar het voor wordt gebruikt</li>
+        <li>De drie manieren om CSS toe te voegen aan HTML</li>
+        <li>Hoe je elementen kunt stylen met CSS</li>
+        <li>Kleuren en achtergronden aanpassen</li>
+        <li>Tekst opmaken met CSS</li>
+        <li>Margin en padding gebruiken</li>
+      </ul>
+
+      <h3>Aan het eind van les 4 kun je:</h3>
+
+      <ul>
+        <li>Uitleggen wat CSS betekent</li>
+        <li>CSS correct toepassen op HTML-elementen</li>
+        <li>Kleuren, fonts en spacing aanpassen</li>
+        <li>Een webpagina stylen met CSS</li>
+      </ul>
+
+    </div>
+
+    <div class="tekst-rechts-container">
+      <img src="./fotos/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_7j353v8xe1h861uc5i53.webp" id="html-logo" alt="htmllogo">
+    </div>
+  </div>
+
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Wat is CSS?</h2>
+      <p>
+        CSS staat voor <strong>Cascading Style Sheets</strong> en is een opmaaktaal die wordt gebruikt om het uiterlijk van webpagina's te bepalen. Met CSS kun je de stijl en lay-out van HTML-elementen aanpassen, zoals kleuren, lettertypen, marges en meer.
+      </p>
+
+      <p>
+        Terwijl HTML de structuur en inhoud van een webpagina definieert, zorgt CSS ervoor dat die inhoud er aantrekkelijk uitziet en goed gepresenteerd wordt.
+      </p>
+
+      <p>
+        CSS maakt het mogelijk om de opmaak van meerdere pagina's centraal te beheren, waardoor het eenvoudiger wordt om een consistente stijl te behouden op een hele website.
+      </p>
+    </div> 
+
+  </div>
+
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-rechts-container">
+      <img src="./fotos/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_7j353v8xe1h861uc5i53.webp" alt="CSS uitleg">
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>CSS koppelen aan HTML</h2>
+
+      <p>
+        Er zijn drie manieren om CSS toe te voegen aan een HTML-pagina:
+      </p>
+
+      <h3>1. Inline CSS</h3>
+      <p>
+        Direct in een HTML-element met het <strong>style</strong> attribuut.
+      </p>
+      <pre>&lt;h1 style="color: blue;"&gt;Hallo&lt;/h1&gt;</pre>
+
+      <h3>2. Interne CSS</h3>
+      <p>
+        In een <strong>&lt;style&gt;</strong> tag binnen de <strong>&lt;head&gt;</strong> sectie.
+      </p>
+
+      <h3>3. Externe CSS</h3>
+      <p>
+        In een apart .css bestand dat wordt gekoppeld met een <strong>&lt;link&gt;</strong> tag. Dit is de beste manier!
+      </p>
+
+    </div>
+
+  </div>
+
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-links-container">
+      <h2>Kleuren en achtergronden</h2>
+      <p>
+        Met CSS kun je kleuren en achtergronden van HTML-elementen aanpassen met de eigenschappen <strong>color</strong> (tekst) en <strong>background-color</strong> (achtergrond).
+      </p>
+
+      <h3>Kleurwaarden</h3>
+      <ul>
+        <li><strong>Kleur namen:</strong> color: red; color: blue;</li>
+        <li><strong>Hex codes:</strong> color: #FF0000; (rood)</li>
+        <li><strong>RGB:</strong> color: rgb(255, 0, 0); (rood)</li>
+      </ul>
+
+      <h2>Margin en padding</h2>
+      <p>
+        <strong>Margin</strong> is de ruimte buiten de rand van een element. <strong>Padding</strong> is de ruimte binnen de rand van een element.
+      </p>
+
+    </div>
+
+    <div class="tekst-code-container">
+        <pre><code class="language-css">
+/* Kleuren en achtergronden */
+h1 {
+  color: white;
+  background-color: blue;
+}
+
+/* Margin en padding */
+p {
+  margin: 20px;
+  padding: 10px;
+  background-color: lightgray;
+}
+
+/* Lettertype aanpassen */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+        </code></pre>
+    </div>
+
+  </div>
+
+  <!--Begin van nieuwe container.-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Eindopdracht les 4</h2>
+      <h3>Opdracht</h3>
+      <p>
+        Maak een eenvoudige webpagina over jouw favoriete hobby. Gebruik HTML voor de structuur en CSS voor de opmaak.
+      </p>
+
+      <h3>Vereisten</h3>
+      <ul>
+        <li>Een titel en een korte beschrijving van je hobby</li>
+        <li>Minstens drie verschillende HTML-elementen (koppen, paragrafen, lijsten)</li>
+        <li>Pas CSS toe om tekstkleuren en achtergronden aan te passen</li>
+        <li>Gebruik margin en padding voor ruimte</li>
+      </ul>
+
+      <h3>Bonus</h3>
+      <ul>
+        <li>Voeg een afbeelding toe en style deze met CSS</li>
+        <li>Experimenteer met verschillende lettertypen</li>
+      </ul>
+      <a href="les5.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+
+    </div> 
+  </div>
+
+  
+      <a href="les5.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+  
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris </p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+    </div>
+  </footer>
+<script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+</html>

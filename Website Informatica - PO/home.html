@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--Pagina WEL klaar-->
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/typingtekst.js"></script>
+</head>
+
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="active"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="navbar-button">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+
+  
+    <h1><a href="" class="typewrite" data-period="2000" data-type='[ "Leer HTML.", "Leer CSS.", "Leer websites maken."]'>
+      <span class="wrap"></span>
+    </a></h1>
+<div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+<h1 class="les-titel">Welkom op de <button id="homepagina-word" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer;">homepagina</button>!</h1>
+<p class="home-tekst">Op deze website leer je de basis van HTML, CSS, Javascript en Python om zelf websites te kunnen maken. We hebben een gestructureerde aanpak gekozen, waarbij we beginnen met de fundamenten van HTML, gevolgd door CSS voor styling, en vervolgens JavaScript voor interactiviteit. Daarnaast bieden we ook lessen in Python, een veelzijdige programmeertaal die veel wordt gebruikt in webontwikkeling en andere gebieden van softwareontwikkeling. Of je nu een beginner bent die net begint met coderen of iemand die zijn vaardigheden wil uitbreiden, deze website biedt een uitgebreide bron van kennis en praktische oefeningen om je te helpen slagen in de wereld van webontwikkeling.</p>  
+</div>
+</div>
+<div class="tekst-hoofd-container">
+  <div class="tekst-links-container">
+<h1 class="les-titel">Waarom HTML, CSS, JavaScript en Python leren?</h1>
+<p class="home-tekst">Het leren van HTML, CSS, Javascript en Python is essentieel voor iedereen die geïnteresseerd is in webontwikkeling, webdesign of gewoon het maken van een persoonlijke website. Hier zijn enkele redenen waarom het leren van deze talen belangrijk is:
+<br>
+1. <strong>HTML:</strong> HTML is de basis van elke webpagina. Het stelt je in staat om de structuur van een website te creëren, zoals het toevoegen van tekst, afbeeldingen, links en andere elementen. Zonder HTML zou het onmogelijk zijn om een website te bouwen.
+<br>
+2. <strong>CSS:</strong> CSS is verantwoordelijk voor de styling van een website. Het stelt je in staat om kleuren, lettertypen, lay-out en andere visuele aspecten van een website aan te passen. Met CSS kun je ervoor zorgen dat je website er aantrekkelijk en professioneel uitziet.
+<br>3. <strong>JavaScript:</strong> JavaScript voegt interactiviteit toe aan een website. Het stelt je in staat om dynamische elementen te creëren, zoals knoppen, formulieren, animaties en meer. Met JavaScript kun je ervoor zorgen dat je website niet alleen statisch is, maar ook interactief en gebruiksvriendelijk.
+<br>4. <strong>Python:</strong> Python is een veelzijdige programmeertaal die veel wordt gebruikt in webontwikkeling, dataanalyse, kunstmatige intelligentie en meer. Het leren van Python kan je helpen bij het bouwen van back-end systemen, het automatiseren van taken en het ontwikkelen van geavanceerde webapplicaties. Bovendien is Python bekend om zijn leesbaarheid en eenvoud, waardoor het een geweldige taal is voor beginners om te leren.</p>   
+</div>
+</div>
+<div class="tekst-hoofd-container">
+  <div class="tekst-links-container">
+<h1 class="les-titel">Hoe te beginnen?</h1>
+<p class="home-tekst">Om te beginnen met het leren van HTML, CSS, JavaScript en Python volg deze stappen:
+<br>
+1. <strong>Begin met HTML:</strong> Leer de basis van HTML, zoals het maken van tags, het structureren van een webpagina en het toevoegen van inhoud. Oefen met het maken van eenvoudige webpagina's om vertrouwd te raken met de syntax en structuur van HTML.
+<br>2. <strong>Ga verder met CSS:</strong> Zodra je de basis van HTML onder de knie hebt, begin dan met het leren van CSS. Leer hoe je stijlen kunt toepassen op je HTML-elementen, hoe je lay-outs kunt maken en hoe je responsive design kunt implementeren. Oefen met het stylen van je webpagina's om een gevoel te krijgen voor hoe CSS werkt.
+<br>3. <strong>Leer JavaScript:</strong> Nadat je comfortabel bent met HTML en CSS, begin dan met het leren van JavaScript. Leer de basisconcepten van JavaScript, zoals variabelen, functies, loops en events. Oefen met het toevoegen van interactiviteit aan je webpagina's, zoals het maken van knoppen die reageren op klikken of  het valideren van formulieren.
+<br>4. <strong>Verken Python:</strong> Als je geïnteresseerd bent in het leren van Python, begin dan met de basisconcepten van de taal, zoals variabelen, datatypes, control structures en functies. Oefen met het schrijven van eenvoudige Python-scripts en verken de mogelijkheden van Python in webontwikkeling, zoals het gebruik van frameworks zoals Django of Flask.</p>  
+</div>
+</div>
+<div class="tekst-hoofd-container">
+  <div class="tekst-links-container">
+<h1 class="les-titel">Veel succes!</h1>
+<p class="home-tekst">We hopen dat deze website je helpt bij het leren van HTML, CSS, JavaScript en Python en dat je veel plezier hebt tijdens het proces. Onthoud dat het leren van een nieuwe vaardigheid tijd en oefening kost, dus wees geduldig met jezelf en blijf gemotiveerd. Veel succes op je reis naar het worden van een webontwikkelaar!</p>
+</div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <p>&copy; 2026 Lucas & Joris</p>
+      <p>Alle rechten voorbehouden.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>HTML Lessen</h4>
+      <ul>
+        <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+        <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+        <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>CSS Lessen</h4>
+      <ul>
+        <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+        <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+        <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+        <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<!-- Privacy & Terms Modal -->
+<div id="privacyModal" class="privacy-modal">
+  <div class="privacy-modal-content">
+    <button class="privacy-close" onclick="closePrivacyModal()">&times;</button>
+    <h2>Privacybeleid & Algemene Voorwaarden</h2>
+    
+    <div class="privacy-tabs">
+      <button class="privacy-tab-btn active" onclick="switchTab('privacy')">Privacybeleid</button>
+      <button class="privacy-tab-btn" onclick="switchTab('terms')">Algemene Voorwaarden</button>
+    </div>
+
+    <div class="privacy-tab-content" id="privacy">
+      <h3>Privacybeleid</h3>
+      <p><strong>1. Gegevensverzameling</strong></p>
+      <p>Wij verzamelen alleen noodzakelijke gegevens voor het functioneren van deze website, zoals uw IP-adres en browsing gedrag via cookies.</p>
+      
+      <p><strong>2. Gebruik van Gegevens</strong></p>
+      <p>Uw gegevens worden gebruikt om de website te verbeteren en u een betere ervaring te bieden. Wij verkopen uw gegevens nooit aan derden.</p>
+      
+      <p><strong>3. Beveiliging</strong></p>
+      <p>Wij nemen de beveiliging van uw gegevens serieus en gebruiken moderne encryptie.</p>
+      
+      <p><strong>4. Uw Rechten</strong></p>
+      <p>U hebt het recht om uw gegevens in te zien, te corrigeren of verwijderd te laten worden. Neem contact op voor meer informatie.</p>
+    </div>
+
+    <div class="privacy-tab-content hidden" id="terms">
+      <h3>Algemene Voorwaarden</h3>
+      <p><strong>1. Acceptatie</strong></p>
+      <p>Door deze website te gebruiken, accepteert u deze voorwaarden.</p>
+      
+      <p><strong>2. Inhoud</strong></p>
+      <p>De inhoud van deze website wordt "as-is" aangeboden. Wij garanderen niet de juistheid of volledigheid ervan.</p>
+      
+      <p><strong>3. Aansprakelijkheid</strong></p>
+      <p>Wij zijn niet aansprakelijk voor enige schade voortvloeiend uit het gebruik van deze website.</p>
+      
+      <p><strong>4. Intellectueel Eigendom</strong></p>
+      <p>Alle inhoud op deze website is eigendom van de Al Berding-Thijm scholengemeenschap en is beschermd door auteursrecht.</p>
+      
+      <p><strong>5. Wijzigingen</strong></p>
+      <p>Wij behouden het recht voor om deze voorwaarden te wijzigen zonder voorafgaande kennisgeving.</p>
+    </div>
+
+    <button class="privacy-accept" onclick="closePrivacyModal()">Ik ga akkoord</button>
+  </div>
+</div>
+
+<script src="./JavaScript/Searchbar.js"></script>
+<script src="./JavaScript/PrivacyModal.js"></script>
+<script src="./JavaScript/ThemeToggle.js"></script>
+<script src="./JavaScript/AccountManager.js"></script>
+<script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+
+  // Easter egg: 7 clicks on "homepagina" word to go to loader.html
+  let homeClickCount = 0;
+  const homeWord = document.getElementById('homepagina-word');
+  if (homeWord) {
+    homeWord.addEventListener('click', (e) => {
+      homeClickCount++;
+      console.log('Click count:', homeClickCount);
+      if (homeClickCount === 7) {
+        window.location.href = 'loader.html';
+        homeClickCount = 0; 
+      }
+    });
+  } else {
+    console.log('homepagina-word not found');
+  }
+</script></body>
+
+
+</html>

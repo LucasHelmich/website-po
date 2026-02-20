@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Les 7: Grid & Animations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">CSS Les 7: Grid & Animations</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 7?</h3>
+      <ul>
+        <li>Wat CSS Grid is</li>
+        <li>Grid container en grid items</li>
+        <li>Rijen en kolommen definiëren</li>
+        <li>Elementen positioneren in de grid</li>
+        <li>Animaties met @keyframes</li>
+        <li>Transitions voor vloeiende effecten</li>
+        <li>Transform voor rotatie en schaling</li>
+      </ul>
+      <h3>Aan het eind van les 7 kun je:</h3>
+      <ul>
+        <li>Complexe layouts maken met CSS Grid</li>
+        <li>Responsieve grids ontwerpen</li>
+        <li>Vloeiende animaties toevoegen</li>
+        <li>Interactieve effecten creëren met transforms</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-th" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Geavanceerde CSS</h3>
+        <p>Grid & Animations</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>CSS Grid - De basis</h2>
+      <p>
+        <strong>CSS Grid</strong> is een layout systeem voor tweedimensionale layouts (rijen EN kolommen). Het is ideaal voor complexe pagina-ontwerpen.
+      </p>
+      
+      <p>
+        Waar Flexbox voor één richting (horizontal of vertical) werkt, werkt Grid voor beide richtingen tegelijk!
+      </p>
+
+      <h3>Grid container maken</h3>
+      <pre><code class="language-css">.grid-container {
+  display: grid;
+}</code></pre>
+
+      <p>
+        Alle directe kinderen van .grid-container worden automatisch <strong>grid items</strong>.
+      </p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-plus-circle" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Rijen & Kolommen</h3>
+        <p>Grid structuur definiëren</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Rijen en kolommen</h2>
+
+      <h3>3 kolommen van gelijke breedte</h3>
+      <pre><code class="language-css">.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* of korter: */
+  grid-template-columns: repeat(3, 1fr);
+}</code></pre>
+
+      <p>
+        <strong>fr</strong> = fractional unit (breuk). 1fr = 1 deel van beschikbare ruimte.
+      </p>
+
+      <h3>Rijen definiëren</h3>
+      <pre><code class="language-css">.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 150px auto;
+  /* Eerste rij 200px, tweede 150px, rest automatisch */
+}</code></pre>
+
+      <h3>Gap tussen items</h3>
+      <pre><code class="language-css">.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  /* Of apart: */
+  row-gap: 20px;
+  column-gap: 20px;
+}</code></pre>
+
+      <h3>Praktisch voorbeeld: Galerij</h3>
+      <pre><code class="language-css">.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.galerie img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}</code></pre>
+
+      <p>Dit maakt een responsive galerie die automatisch afmetingen aanpast!</p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Elementen in Grid plaatsen</h2>
+
+      <h3>Specifieke positie voor items</h3>
+      <pre><code class="language-css">.item-1 {
+  grid-column: 1 / 2;  /* Van kolom 1 tot 2 */
+  grid-row: 1 / 2;     /* Van rij 1 tot 2 */
+}
+
+.item-2 {
+  grid-column: 2 / 4;  /* Span 2 kolommen */
+  grid-row: 1 / 3;     /* Span 2 rijen */
+}</code></pre>
+
+      <h3>Korte notatie</h3>
+      <pre><code class="language-css">.item {
+  grid-column: span 2;  /* Span 2 kolommen */
+  grid-row: span 3;     /* Span 3 rijen */
+}</code></pre>
+
+      <h3>Heroes/featured item voorbeeld</h3>
+      <pre><code class="language-css">.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  gap: 10px;
+}
+
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: orange;
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #ffa500 0%, #ff6b6b 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-cog" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Animaties</h3>
+        <p>Vloeiende bewegingen met @keyframes</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Animaties met @keyframes</h2>
+
+      <h3>Eenvoudige animatie maken</h3>
+      <pre><code class="language-css">@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.box {
+  animation: slide-in 2s ease-in-out;
+}</code></pre>
+
+      <h3>Animatie-eigenschappen</h3>
+      <pre><code class="language-css">.element {
+  animation-name: my-animation;     /* Naam van @keyframes */
+  animation-duration: 2s;           /* Hoe lang (2 seconden) */
+  animation-timing-function: ease;  /* Hoe snel (ease, linear, enz) */
+  animation-delay: 0.5s;            /* Vertraging voordat het start */
+  animation-iteration-count: 3;     /* Hoeveel keer herhalen */
+  animation-fill-mode: forwards;    /* Status na animatie */
+}</code></pre>
+
+      <h3>Praktijk voorbeeld: Pulse animatie</h3>
+      <pre><code class="language-css">@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.heart {
+  animation: pulse 1s ease-in-out infinite;
+}</code></pre>
+
+      <h3>Meer animatie-ideeën</h3>
+      <ul>
+        <li><strong>Fade in</strong> - opacity van 0 naar 1</li>
+        <li><strong>Slide</strong> - translateX/Y</li>
+        <li><strong>Bounce</strong> - meerdere keyframes</li>
+        <li><strong>Rotate</strong> - transform rotate()</li>
+        <li><strong>Color change</strong> - background-color veranderen</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Transitions</h2>
+
+      <p>
+        <strong>Transitions</strong> zijn korte animaties die triggeren bij een state-verandering (bijv. hover).
+      </p>
+
+      <h3>Basis transitie</h3>
+      <pre><code class="language-css">.button {
+  background-color: blue;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: darkblue;
+}</code></pre>
+
+      <p>
+        De achtergrondkleur zal vloeiend overgaan in 0.3 seconden!
+      </p>
+
+      <h3>Meerdere eigenschappen</h3>
+      <pre><code class="language-css">.card {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 0.3s ease;
+  /* of: transform 0.3s, opacity 0.5s; */
+}
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-refresh" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Transform</h3>
+        <p>Rotatie, schaling en verplaatsing</p>
+      </div>
+    </div>
+    
+
+.card:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Transform mogelijkheden</h2>
+      <ul>
+        <li><strong>scale(1.1)</strong> - Vergroot/verkleint 10%</li>
+        <li><strong>translateX(20px)</strong> - Verplaatst horizontaal</li>
+        <li><strong>rotate(45deg)</strong> - Draait 45 graden</li>
+        <li><strong>skew(10deg)</strong> - Schuint</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktijk voorbeeld: Interactieve kaarten</h2>
+
+      <pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;div class="cards-grid"&gt;
+  &lt;div class="card"&gt;
+    &lt;h3&gt;Card 1&lt;/h3&gt;
+    &lt;p&gt;Dit is een kaart&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card"&gt;Card 2&lt;/div&gt;
+  &lt;div class="card"&gt;Card 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+      <pre><code class="language-css">/* CSS */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}</code></pre>
+
+      <p><strong>Resultaat:</strong> Kaarten die omhoog glijden en schaduwen veranderen op hover!</p>
+      
+      <a href="les8.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Les 15: Control Structures</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">Python Les 15: Control Structures</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 3?</h3>
+      <ul>
+        <li>If-else statements</li>
+        <li>Comparison operators</li>
+        <li>Logical operators</li>
+        <li>For loops</li>
+        <li>While loops</li>
+        <li>Break en continue</li>
+        <li>Nested loops</li>
+      </ul>
+      <h3>Aan het eind van les 3 kun je:</h3>
+      <ul>
+        <li>Beslissingen nemen met if-else</li>
+        <li>Herhalende taken uitvoeren met loops</li>
+        <li>Complexe voorwaarden maken</li>
+        <li>Loops controleren met break/continue</li>
+        <li>Geneste control structures gebruiken</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-code-fork" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Control Flow</h3>
+        <p>Beslissingen en herhalingen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>If-Else Statements</h2>
+      <p>
+        <strong>If-else statements</strong> worden gebruikt om beslissingen te nemen in je programma gebaseerd op voorwaarden.
+      </p>
+
+      <h3>Basis if statement</h3>
+      <pre><code class="language-python">leeftijd = 16
+
+if leeftijd >= 16:
+    print("Je mag brommer rijden!")
+    print("Gefeliciteerd!")</code></pre>
+
+      <h3>If-else statement</h3>
+      <pre><code class="language-python">leeftijd = 14
+
+if leeftijd >= 16:
+    print("Je mag brommer rijden!")
+else:
+    print("Je bent nog te jong voor een brommer.")</code></pre>
+
+      <h3>If-elif-else statement</h3>
+      <pre><code class="language-python">cijfer = 8.5
+
+if cijfer >= 9.0:
+    print("Uitstekend!")
+elif cijfer >= 8.0:
+    print("Goed!")
+elif cijfer >= 7.0:
+    print("Voldoende")
+else:
+    print("Onvoldoende")</code></pre>
+
+      <p><strong>Belangrijk:</strong> Python gebruikt indentatie (4 spaties) om code blokken aan te geven.</p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-balance-scale" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Comparison</h3>
+        <p>Operators voor vergelijking</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Comparison Operators</h2>
+
+      <h3>Vergelijkingsoperatoren</h3>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <th style="border: 1px solid #ddd; padding: 8px;">Operator</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Betekenis</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Voorbeeld</th>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">==</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Gelijk aan</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">x == y</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">!=</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Niet gelijk aan</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">x != y</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">&lt;</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Kleiner dan</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">x &lt; y</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">&lt;=</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Kleiner of gelijk</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">x &lt;= y</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">></td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Groter dan</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">x > y</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">>=</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Groter of gelijk</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">x >= y</td>
+        </tr>
+      </table>
+
+      <h3>Voorbeelden</h3>
+      <pre><code class="language-python">leeftijd = 16
+minimum_leeftijd = 16
+
+if leeftijd >= minimum_leeftijd:
+    print("Toegang verleend")
+else:
+    print("Toegang geweigerd")
+
+naam = "Lucas"
+if naam == "Lucas":
+    print("Welkom terug, Lucas!")
+
+cijfer = 7.5
+if cijfer &lt; 5.5:
+    print("Herkansing nodig")
+elif cijfer >= 8.0:
+    print("Goed gedaan!")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Logical Operators</h2>
+
+      <h3>Logische operatoren</h3>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <th style="border: 1px solid #ddd; padding: 8px;">Operator</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Betekenis</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Voorbeeld</th>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">and</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Beide voorwaarden waar</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">x > 5 and x &lt; 10</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">or</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Minstens één waar</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">x > 5 or x &lt; 10</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">not</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Omgekeerde waarde</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">not(x > 5)</td>
+        </tr>
+      </table>
+
+      <h3>Voorbeelden</h3>
+      <pre><code class="language-python">leeftijd = 16
+heeft_id = True
+
+# and operator
+if leeftijd >= 16 and heeft_id:
+    print("Je mag naar binnen")
+
+# or operator
+dag = "zaterdag"
+if dag == "zaterdag" or dag == "zondag":
+    print("Het is weekend!")
+
+# not operator
+is_student = False
+if not is_student:
+    print("Je bent geen student")
+
+# Complexe voorwaarden
+cijfer = 8.5
+aanwezigheid = 95
+
+if cijfer >= 7.0 and aanwezigheid >= 80:
+    print("Geslaagd!")
+elif cijfer >= 6.0 and aanwezigheid >= 90:
+    print("Geslaagd met extra voorwaarden")
+else:
+    print("Niet geslaagd")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-refresh" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>For Loops</h3>
+        <p>Herhalen over sequenties</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>For Loops</h2>
+
+      <h3>Basis for loop</h3>
+      <pre><code class="language-python">for i in range(5):
+    print(f"Nummer: {i}")
+
+# Output:
+# Nummer: 0
+# Nummer: 1
+# Nummer: 2
+# Nummer: 3
+# Nummer: 4</code></pre>
+
+      <h3>Range functie</h3>
+      <pre><code class="language-python"># range(stop)
+range(5)        # 0, 1, 2, 3, 4
+
+# range(start, stop)
+range(2, 8)     # 2, 3, 4, 5, 6, 7
+
+# range(start, stop, step)
+range(1, 10, 2) # 1, 3, 5, 7, 9</code></pre>
+
+      <h3>Loop over string</h3>
+      <pre><code class="language-python">naam = "Python"
+for letter in naam:
+    print(letter)
+
+# Output:
+# P
+# y
+# t
+# h
+# o
+# n</code></pre>
+
+      <h3>Loop met index</h3>
+      <pre><code class="language-python">namen = ["Lucas", "Joris", "Emma"]
+for i in range(len(namen)):
+    print(f"Persoon {i+1}: {namen[i]}")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>While Loops</h2>
+
+      <h3>Basis while loop</h3>
+      <pre><code class="language-python">teller = 1
+while teller &lt;= 5:
+    print(f"Telling: {teller}")
+    teller += 1
+
+# Output:
+# Telling: 1
+# Telling: 2
+# Telling: 3
+# Telling: 4
+# Telling: 5</code></pre>
+
+      <h3>While met user input</h3>
+      <pre><code class="language-python">antwoord = ""
+while antwoord != "stop":
+    antwoord = input("Typ 'stop' om te stoppen: ")
+    print(f"Je typte: {antwoord}")
+
+print("Programma gestopt!")</code></pre>
+
+      <h3>Infinite loop (voorzichtig!)</h3>
+      <pre><code class="language-python"># Dit loopt voor altijd!
+while True:
+    print("Dit stopt nooit...")
+    break  # Gebruik break om te stoppen</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-stop" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Break & Continue</h3>
+        <p>Loop controle</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Break en Continue</h2>
+
+      <h3>Break - stopt de hele loop</h3>
+      <pre><code class="language-python">for i in range(10):
+    if i == 5:
+        print("Gevonden! Stoppen bij 5")
+        break
+    print(f"Nummer: {i}")
+
+# Output:
+# Nummer: 0
+# Nummer: 1
+# Nummer: 2
+# Nummer: 3
+# Nummer: 4
+# Gevonden! Stoppen bij 5</code></pre>
+
+      <h3>Continue - slaat huidige iteratie over</h3>
+      <pre><code class="language-python">for i in range(5):
+    if i == 2:
+        print("Sla 2 over")
+        continue
+    print(f"Nummer: {i}")
+
+# Output:
+# Nummer: 0
+# Nummer: 1
+# Sla 2 over
+# Nummer: 3
+# Nummer: 4</code></pre>
+
+      <h3>Praktisch voorbeeld</h3>
+      <pre><code class="language-python"># Zoek eerste even getal
+getallen = [1, 3, 5, 6, 7, 8, 9]
+for getal in getallen:
+    if getal % 2 == 0:
+        print(f"Eerste even getal gevonden: {getal}")
+        break
+
+# Sla negatieve getallen over
+getallen = [1, -2, 3, -4, 5]
+for getal in getallen:
+    if getal &lt; 0:
+        continue
+    print(f"Positief getal: {getal}")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Nested Loops</h2>
+
+      <h3>Geneste for loops</h3>
+      <pre><code class="language-python">for i in range(3):
+    for j in range(2):
+        print(f"i={i}, j={j}")
+
+# Output:
+# i=0, j=0
+# i=0, j=1
+# i=1, j=0
+# i=1, j=1
+# i=2, j=0
+# i=2, j=1</code></pre>
+
+      <h3>Praktisch voorbeeld: Vermenigvuldigingstafel</h3>
+      <pre><code class="language-python">for i in range(1, 4):
+    print(f"Vermenigvuldigingstafel van {i}:")
+    for j in range(1, 11):
+        print(f"{i} x {j} = {i*j}")
+    print()  # Lege regel</code></pre>
+
+      <h3>Break in nested loops</h3>
+      <pre><code class="language-python">for i in range(3):
+    for j in range(3):
+        if i == 1 and j == 1:
+            print("Stoppen bij i=1, j=1")
+            break
+        print(f"i={i}, j={j}")
+    else:
+        continue
+    break
+
+# Output:
+# i=0, j=0
+# i=0, j=1
+# i=0, j=2
+# i=1, j=0
+# Stoppen bij i=1, j=1</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktijkopdracht</h2>
+
+      <h3>Oefening 1: Leeftijd checker</h3>
+      <p>Schrijf een programma dat vraagt om leeftijd en dan zegt:</p>
+      <ul>
+        <li>&lt; 13: "Je bent een kind"</li>
+        <li>13-17: "Je bent een tiener"</li>
+        <li>18-64: "Je bent een volwassene"</li>
+        <li>&gt;= 65: "Je bent een senior"</li>
+      </ul>
+
+      <h3>Oefening 2: Wachtwoord validator</h3>
+      <p>Maak een programma dat een wachtwoord vraagt en checkt:</p>
+      <ul>
+        <li>Minimaal 8 karakters</li>
+        <li>Bevat minstens één cijfer</li>
+        <li>Bevat minstens één hoofdletter</li>
+      </ul>
+
+      <h3>Oefening 3: Getallen teller</h3>
+      <p>Schrijf een programma dat:</p>
+      <ul>
+        <li>Getallen van 1 tot 100 print</li>
+        <li>"Fizz" print bij veelvouden van 3</li>
+        <li>"Buzz" print bij veelvouden van 5</li>
+        <li>"FizzBuzz" print bij veelvouden van beide</li>
+      </ul>
+
+      <h3>Oefening 4: Menu systeem</h3>
+      <p>Maak een programma met een menu:</p>
+      <pre>1. Optellen
+2. Aftrekken
+3. Vermenigvuldigen
+4. Delen
+5. Stoppen</pre>
+      <p>Gebruiker kiest optie en voert berekening uit.</p>
+
+    
+      <a href="les16.html" class="volgende-les">Volgende Les: Functies <i class="fa fa-arrow-right"></i></a>
+    
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>JavaScript Lessen</h4>
+        <ul>
+          <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+          <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+          <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+          <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+          <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

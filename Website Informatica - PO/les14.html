@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Les 14: Variabelen en Datatypes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">Python Les 14: Variabelen en Datatypes</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 2?</h3>
+      <ul>
+        <li>Wat zijn variabelen?</li>
+        <li>Verschillende datatypes in Python</li>
+        <li>Variabelen declareren en gebruiken</li>
+        <li>Type conversie</li>
+        <li>Input van gebruiker</li>
+        <li>String operaties</li>
+      </ul>
+      <h3>Aan het eind van les 2 kun je:</h3>
+      <ul>
+        <li>Variabelen maken en gebruiken</li>
+        <li>Verschillende datatypes herkennen</li>
+        <li>Data types converteren</li>
+        <li>Gebruikersinput verwerken</li>
+        <li>String manipulatie toepassen</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-database" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Variabelen</h3>
+        <p>Data opslaan en gebruiken</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat zijn Variabelen?</h2>
+      <p>
+        <strong>Variabelen</strong> zijn containers voor het opslaan van data waarden. In Python maak je een variabele door simpelweg een naam te geven en een waarde toe te kennen.
+      </p>
+
+      <h3>Variabele regels:</h3>
+      <ul>
+        <li>Beginnen met een letter of underscore (_)</li>
+        <li>Kunnen letters, cijfers en underscores bevatten</li>
+        <li>Hoofdlettergevoelig (age ≠ Age)</li>
+        <li>Geen Python keywords gebruiken</li>
+        <li>Beschrijvende namen gebruiken</li>
+      </ul>
+
+      <h3>Voorbeelden:</h3>
+      <pre><code class="language-python"># Goede variabelen namen
+naam = "Lucas"
+leeftijd = 16
+is_student = True
+_email = "lucas@email.com"
+
+# Slechte variabelen namen
+n = "Lucas"          # Niet beschrijvend
+1naam = "Lucas"      # Begint met cijfer
+naam-leeftijd = 16   # Streepje niet toegestaan
+class = "Python"     # Keyword</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-tags" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Datatypes</h3>
+        <p>Soorten data in Python</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Python Datatypes</h2>
+
+      <h3>1. Strings (tekst)</h3>
+      <pre><code class="language-python">naam = "Lucas"
+bericht = 'Hallo wereld'
+meer_regels = """Dit is een
+string over
+meerdere regels"""</code></pre>
+
+      <h3>2. Integers (gehele getallen)</h3>
+      <pre><code class="language-python">leeftijd = 16
+punten = 100
+negatief = -5</code></pre>
+
+      <h3>3. Floats (komma getallen)</h3>
+      <pre><code class="language-python">prijs = 19.99
+pi = 3.14159
+negatief_float = -2.5</code></pre>
+
+      <h3>4. Booleans (waar/onwaar)</h3>
+      <pre><code class="language-python">is_student = True
+heeft_auto = False
+ingelogd = True</code></pre>
+
+      <h3>Type controleren</h3>
+      <pre><code class="language-python">print(type(naam))        # &lt;class 'str'&gt;
+print(type(leeftijd))    # &lt;class 'int'&gt;
+print(type(prijs))       # &lt;class 'float'&gt;
+print(type(is_student))  # &lt;class 'bool'&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Type Conversie</h2>
+
+      <h3>String naar andere types</h3>
+      <pre><code class="language-python">leeftijd_str = "16"
+leeftijd_int = int(leeftijd_str)    # 16
+
+prijs_str = "19.99"
+prijs_float = float(prijs_str)      # 19.99
+
+waar_str = "True"
+waar_bool = bool(waar_str)          # True</code></pre>
+
+      <h3>Andere types naar string</h3>
+      <pre><code class="language-python">leeftijd = 16
+tekst = str(leeftijd)               # "16"
+
+prijs = 19.99
+tekst = str(prijs)                  # "19.99"</code></pre>
+
+      <h3>Let op met conversie!</h3>
+      <pre><code class="language-python"># Dit werkt
+int("123")     # 123
+float("3.14")  # 3.14
+
+# Dit geeft fouten
+int("abc")     # ValueError
+int("3.14")    # ValueError (gebruik float())</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-keyboard-o" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>User Input</h3>
+        <p>Gebruikersinput verwerken</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Gebruikersinput</h2>
+
+      <h3>input() functie</h3>
+      <p>Gebruik <code>input()</code> om tekst van de gebruiker te krijgen:</p>
+
+      <pre><code class="language-python">naam = input("Wat is je naam? ")
+print(f"Hallo, {naam}!")
+
+leeftijd = input("Hoe oud ben je? ")
+leeftijd = int(leeftijd)  # Converteren naar integer
+print(f"Volgend jaar ben je {leeftijd + 1} jaar oud.")</code></pre>
+
+      <h3>Voorbeeld programma:</h3>
+      <pre><code class="language-python">print("Welkom bij de leeftijd calculator!")
+
+naam = input("Wat is je naam? ")
+geboorte_jaar = input("In welk jaar ben je geboren? ")
+
+# Converteren naar integer
+geboorte_jaar = int(geboorte_jaar)
+huidig_jaar = 2024
+leeftijd = huidig_jaar - geboorte_jaar
+
+print(f"Hallo {naam}, je bent {leeftijd} jaar oud!")</code></pre>
+
+      <p><strong>Belangrijk:</strong> <code>input()</code> geeft altijd een string terug. Gebruik <code>int()</code> of <code>float()</code> voor getallen.</p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>String Operaties</h2>
+
+      <h3>String concatenatie</h3>
+      <pre><code class="language-python">voornaam = "Lucas"
+achternaam = "Helmich"
+volledige_naam = voornaam + " " + achternaam
+print(volledige_naam)  # Lucas Helmich</code></pre>
+
+      <h3>String interpolatie (f-strings)</h3>
+      <pre><code class="language-python">naam = "Lucas"
+leeftijd = 16
+print(f"Hallo, ik ben {naam} en ik ben {leeftijd} jaar oud.")
+
+# Oude methodes
+print("Hallo, ik ben " + naam + " en ik ben " + str(leeftijd) + " jaar oud.")
+print("Hallo, ik ben {} en ik ben {} jaar oud.".format(naam, leeftijd))</code></pre>
+
+      <h3>String methodes</h3>
+      <pre><code class="language-python">tekst = "Hallo Wereld"
+
+print(tekst.upper())      # "HALLO WERELD"
+print(tekst.lower())      # "hallo wereld"
+print(tekst.title())      # "Hallo Wereld"
+print(tekst.replace("Wereld", "Python"))  # "Hallo Python"
+print(len(tekst))         # 12 (lengte)
+print(tekst[0])           # "H" (eerste karakter)
+print(tekst[-1])          # "d" (laatste karakter)</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktijkopdracht</h2>
+
+      <h3>Oefening 1: Persoonlijke informatie</h3>
+      <p>Schrijf een programma dat vraagt om:</p>
+      <ul>
+        <li>Voornaam</li>
+        <li>Achternaam</li>
+        <li>Leeftijd</li>
+        <li>Woonplaats</li>
+      </ul>
+      <p>En toon dan alle informatie in een nette zin.</p>
+
+      <h3>Oefening 2: Rekenmachine</h3>
+      <p>Maak een programma dat twee getallen vraagt en dan:</p>
+      <ul>
+        <li>Optellen</li>
+        <li>Aftrekken</li>
+        <li>Vermenigvuldigen</li>
+        <li>Delen</li>
+      </ul>
+      <p>Toont met duidelijke labels.</p>
+
+      <h3>Oefening 3: String manipulatie</h3>
+      <p>Vraag de gebruiker om een zin en:</p>
+      <ul>
+        <li>Toon de zin in hoofdletters</li>
+        <li>Toon de lengte van de zin</li>
+        <li>Vervang alle spaties door streepjes</li>
+        <li>Toon alleen de eerste letter van elk woord</li>
+      </ul>
+
+      <a href="les15.html" style="text-decoration: none;">
+        <button class="volgende-les">Volgende Les: Control Structures <i class="fa fa-arrow-right"></i></button>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>JavaScript Lessen</h4>
+        <ul>
+          <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+          <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+          <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+          <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+          <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

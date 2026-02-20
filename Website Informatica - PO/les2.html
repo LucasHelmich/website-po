@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Les 2: Tekst maken</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+
+<script src="./JavaScript/Searchbar.js"></script>
+<script src="./JavaScript/ThemeToggle.js"></script>
+<script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">HTML Les 2: Tekst maken</h1>
+
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 2?</h3>
+      <ul>
+        <li>Hoe je koppen gebruikt (<strong>&lt;h1&gt;</strong> t/m <strong>&lt;h6&gt;</strong>)</li>
+        <li>Waarom structuur in tekst belangrijk is</li>
+        <li>Hoe je paragrafen maakt met <strong>&lt;p&gt;</strong></li>
+        <li>Wanneer je een regelafbreking gebruikt met <strong>&lt;br&gt;</strong></li>
+        <li>Hoe je tekst benadrukt met <strong>&lt;strong&gt;</strong> en <strong>&lt;em&gt;</strong></li>
+        <li>Hoe je lijsten maakt (ongeordend en geordend)</li>
+        <li>Het verschil tussen betekenis en uiterlijk van tekst</li>
+      </ul>
+      <h3>Aan het eind van les 2 kun je:</h3>
+      <ul>
+        <li>Een webpagina maken met een duidelijke tekststructuur</li>
+        <li>Koppen en paragrafen correct gebruiken</li>
+        <li>Tekst benadrukken met <strong>&lt;strong&gt;</strong> en <strong>&lt;em&gt;</strong></li>
+        <li>Een lijst toevoegen aan een webpagina</li>
+        <li>Leesbare en overzichtelijke tekst schrijven in HTML</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <img src="fotos/HTML5_logo_and_wordmark.png" id="html-logo" alt="logo-html">
+    </div>
+  </div>
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Wat zijn koppen?</h2>
+      <p>
+      Koppen gebruik je om titels en tussenkopjes op je webpagina te maken.
+      Ze zorgen ervoor dat je tekst overzichtelijk en makkelijk te lezen is.
+      </p>
+
+      <h2>Welke koppen zijn er?</h2>
+      <p>
+      HTML heeft zes soorten koppen: van <strong>&lt;h1&gt;</strong> tot <strong>&lt;h6&gt;</strong>.
+      &lt;h1&gt; is de belangrijkste en grootste kop.
+      &lt;h6&gt; is de minst belangrijke en kleinste kop.
+      </p>
+
+      <h2>Wat is een paragraaf?</h2>
+      <p>
+      Een paragraaf is een stuk tekst. In HTML maak je een paragraaf met de
+      <strong>&lt;p&gt;</strong>-tag.
+      </p>
+
+      <p>
+      Elke nieuwe alinea zet je in een nieuwe paragraaf. Dit maakt je tekst duidelijker.
+      </p>
+
+      <h2>Waarom zijn koppen en paragrafen belangrijk?</h2>
+      <p>
+      Ze zorgen voor structuur op je webpagina. Bezoekers kunnen sneller zien waar de tekst over gaat.
+      Ook zoekmachines gebruiken koppen om de inhoud te begrijpen.
+      </p>
+    </div> 
+  </div>
+  <div class="tekst-hoofd-container">
+  <div class="tekst-links-container">
+      <h2>Regelafbrekingen</h2>
+      <p>
+      Soms wil je een nieuwe regel beginnen zonder een nieuwe paragraaf.
+      Daarvoor gebruik je de <strong>&lt;br&gt;</strong>-tag.
+      </p>
+
+      <p>
+      Dit is de eerste regel.<br>
+      Dit staat op de volgende regel.
+      </p>
+
+      <h2>Tekst benadrukken</h2>
+      <p>
+      Soms wil je een woord extra belangrijk maken.  
+      Daarvoor gebruik je <strong>&lt;strong&gt;</strong>.
+      </p>
+
+      <p>
+      Dit is <strong>belangrijke</strong> tekst.
+      </p>
+
+      <p>
+      Je kunt ook nadruk leggen met <strong>&lt;em&gt;</strong>.
+      Dit wordt meestal schuin weergegeven.
+      </p>
+
+      <p>
+      Dit is <em>nadruk</em> in een zin.
+      </p>
+
+      <h2>Wanneer gebruik je wat?</h2>
+      <p>
+      Gebruik <strong>&lt;strong&gt;</strong> voor belangrijke informatie.
+      Gebruik <strong>&lt;em&gt;</strong> voor nadruk in een zin.
+      Gebruik <strong>&lt;br&gt;</strong> alleen als je echt een regel wilt afbreken.
+      </p>
+
+    </div> 
+    </div>
+
+    <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h3>Lijsten in HTML</h3>
+      <p>
+      Met lijsten kun je informatie overzichtelijk onder elkaar zetten.
+      Er zijn twee soorten lijsten in HTML.
+      </p>
+
+      <h3>Ongeordende lijst</h3>
+      <p>
+      Een ongeordende lijst gebruik je als de volgorde niet belangrijk is.
+      Je maakt deze met <strong>&lt;ul&gt;</strong> en lijstitems met <strong>&lt;li&gt;</strong>.
+      </p>
+
+      <ul>
+        <li>Appels</li>
+        <li>Bananen</li>
+        <li>Peren</li>
+      </ul>
+
+      <h3>Geordende lijst</h3>
+      <p>
+      Een geordende lijst gebruik je als de volgorde wel belangrijk is.
+      Je maakt deze met <strong>&lt;ol&gt;</strong> en <strong>&lt;li&gt;</strong>.
+      </p>
+
+      <ol>
+        <li>Open je editor</li>
+        <li>Maak een HTML-bestand</li>
+        <li>Open het in de browser</li>
+      </ol>
+
+      <h3>Waarom zijn lijsten handig?</h3>
+      <p>
+      Lijsten maken informatie duidelijk en overzichtelijk.
+      Bezoekers kunnen sneller zien wat bij elkaar hoort.
+      </p>
+
+    </div> 
+    </div>
+
+    <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Eindopdracht les 2</h2>
+      <h3>Opdracht</h3>
+      <p>
+      Maak een webpagina over jezelf of over een hobby.
+      Gebruik verschillende soorten tekst die je in deze les hebt geleerd.
+      </p>
+
+      <h3>Wat moet er in je pagina staan?</h3>
+      <ul>
+        <li>Een titel met <strong>&lt;h1&gt;</strong></li>
+        <li>Minstens twee tussenkopjes met <strong>&lt;h2&gt;</strong></li>
+        <li>Minstens twee paragrafen met <strong>&lt;p&gt;</strong></li>
+        <li>Een regelafbreking met <strong>&lt;br&gt;</strong></li>
+        <li>Belangrijke woorden met <strong>&lt;strong&gt;</strong> of <strong>&lt;em&gt;</strong></li>
+        <li>Een ongeordende lijst (<strong>&lt;ul&gt;</strong>)</li>
+        <li>Een geordende lijst (<strong>&lt;ol&gt;</strong>)</li>
+      </ul>
+
+      <h3>Doel</h3>
+      <p>
+      Laat zien dat je koppen, paragrafen, regelafbrekingen, benadrukken en lijsten correct kunt gebruiken.
+      </p>
+
+      <h3>Extra uitdaging</h3>
+      <p>
+      Maak je pagina netjes en overzichtelijk zodat iemand anders hem makkelijk kan lezen.
+      </p>
+      <a href="les3.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+      </div>
+      </div>
+
+      
+      
+  
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <p>&copy; 2026 Lucas & Joris </p>
+      <p>Alle rechten voorbehouden.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>HTML Lessen</h4>
+      <ul>
+        <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+        <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+        <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>CSS Lessen</h4>
+      <ul>
+        <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+        <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+        <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+</html>

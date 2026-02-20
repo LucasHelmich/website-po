@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Les 5: Layout in CSS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">🔍</button>
+        <input type="text" id="zoekInput" placeholder="Zoek les..." oninput="showSuggesties(this.value)" onkeydown="navigateSuggesties(event)">
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">CSS Les 5: Layout in CSS</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 5?</h3>
+      <ul>
+        <li>De anatomie van het <strong>CSS Box Model</strong></li>
+        <li>Werken met <strong>Margin, Padding en Borders</strong></li>
+        <li>Het verschil tussen <strong>Block, Inline en Inline-block</strong></li>
+        <li>De basis van <strong>Flexbox</strong> voor uitlijning</li>
+        <li>Elementen horizontaal en verticaal centreren</li>
+      </ul>
+
+      <h3>Aan het eind van les 5 kun je:</h3>
+      <ul>
+        <li>De ruimte binnen en buiten elementen precies beheersen</li>
+        <li>Voorspellen hoe elementen op de pagina verschijnen</li>
+        <li>Een navigatiebalk bouwen met Flexbox</li>
+        <li>Een professionele witruimte (spacing) toepassen</li>
+      </ul>
+    </div>
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-cubes" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Layout in CSS</h3>
+        <p>Box Model, Display Types & Flexbox</p>
+      </div>
+   
+      
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Het CSS Box Model</h2>
+      <p>
+        In CSS is elk element een rechthoekige doos. Om een goede layout te maken, moet je begrijpen hoe deze doos is opgebouwd:
+      </p>
+      <ul>
+        <li><strong>Content:</strong> De tekst of afbeelding zelf.</li>
+        <li><strong>Padding:</strong> De binnenruimte tussen de content en de rand.</li>
+        <li><strong>Border:</strong> De omlijning van het element.</li>
+        <li><strong>Margin:</strong> De buitenruimte die afstand creëert tot andere elementen.</li>
+      </ul>
+      <p><em>Tip: Gebruik <code>box-sizing: border-box;</code> om te voorkomen dat padding je element breder maakt dan gepland!</em></p>
+    </div> 
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+        <pre><code class="language-css">
+/* Voorbeeld Display */
+.blok {
+  display: block; /* Neemt hele breedte */
+}
+
+.tekst-stukje {
+  display: inline; /* Blijft op dezelfde regel */
+}
+        </code></pre>
+    </div>
+    <div class="tekst-links-container">
+      <h2>Display Eigenschappen</h2>
+      <p>Met de <strong>display</strong> eigenschap bepaal je hoe elementen zich gedragen ten opzichte van elkaar:</p>
+      <ul>
+        <li><strong>Block:</strong> Begint op een nieuwe regel en neemt de volle breedte in (bijv. &lt;div&gt;, &lt;h1&gt;).</li>
+        <li><strong>Inline:</strong> Neemt alleen de breedte van de inhoud in en dwingt geen nieuwe regel af (bijv. &lt;span&gt;, &lt;a&gt;).</li>
+        <li><strong>Inline-Block:</strong> Staat naast elkaar, maar laat je wel een breedte en hoogte instellen.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Flexbox: De 'Layout King'</h2>
+      <p>
+        Flexbox gebruik je om items binnen een container moeiteloos uit te lijnen. Je activeert het met <code>display: flex;</code> op de ouder-container.
+      </p>
+      <h3>Belangrijke eigenschappen:</h3>
+      <ul>
+        <li><strong>justify-content:</strong> Horizontale uitlijning (center, space-between).</li>
+        <li><strong>align-items:</strong> Verticale uitlijning (center).</li>
+        <li><strong>flex-direction:</strong> Items in een rij (row) of kolom (column) zetten.</li>
+      </ul>
+    </div>
+    <div class="tekst-code-container">
+        <pre><code class="language-css">
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+}
+        </code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Eindopdracht les 5</h2>
+      <h3>Opdracht</h3>
+      <p>
+        Ontwerp een moderne "Feature Sectie" waarbij je de basis van layout en spacing toepast.
+      </p>
+      <h3>Vereisten</h3>
+      <ul>
+        <li>Maak een container die 3 informatiekaarten naast elkaar zet met <strong>Flexbox</strong>.</li>
+        <li>Gebruik <strong>padding</strong> om de tekst in de kaarten ademruimte te geven.</li>
+        <li>Zorg voor afstand tussen de kaarten met <strong>margin</strong>.</li>
+        <li>Geef de kaarten een <strong>border</strong> en een achtergrondkleur.</li>
+      </ul>
+      <h3>Bonus</h3>
+      <ul>
+        <li>Zet de tekst in de kaarten exact in het midden (zowel horizontaal als verticaal).</li>
+        <li>Voeg een <code>box-shadow</code> toe voor een diepte-effect.</li>
+      </ul>
+    </div> 
+  </div>
+
+  <div class="button">
+      <a href="les6.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris </p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+    </div>
+  </footer>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+</html>

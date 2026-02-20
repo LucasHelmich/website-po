@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Les 6: Responsive design</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">CSS Les 6: Responsive design</h1>
+
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 6?</h3>
+
+      <ul>
+        <li>Wat responsive design betekent</li>
+        <li>Mobile-first design benadering</li>
+        <li>Media queries gebruiken</li>
+        <li>Viewports en device widths</li>
+        <li>Responsieve afbeeldingen en layouts</li>
+        <li>Breakpoints bepalen</li>
+        <li>Testen op verschillende apparaten</li>
+      </ul>
+
+      <h3>Aan het eind van les 6 kun je:</h3>
+
+      <ul>
+        <li>Websites maken die op alle devices werken</li>
+        <li>Media queries correct toepassen</li>
+        <li>Mobile-first ontwerpen</li>
+        <li>Responsieve en flexibele layouts creëren</li>
+      </ul>
+
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-mobile" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Responsive Design</h3>
+        <p>Websites voor alle apparaten</p>
+      </div>
+    </div>
+  </div>
+
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Wat is Responsive Design?</h2>
+      <p>
+        <strong>Responsive Design</strong> betekent dat een website zich aanpast aan verschillende schermgroottes. Een responsieve site werkt perfect op een mobiele telefoon, tablet en desktop!
+      </p>
+
+      <p>
+        In plaats van vaste breedtes, gebruiken we:
+      </p>
+      <ul>
+        <li>Flexibele layouts (Flexbox, Grid)</li>
+        <li>Procenten in plaats van vaste pixels</li>
+        <li>Media queries voor verschillende schermen</li>
+        <li>Flexibele afbeeldingen</li>
+      </ul>
+
+      <p><strong>Waarom belangrijk?</strong> Meer dan 50% van het web verkeer komt van mobiele apparaten!</p>
+    </div> 
+
+  </div>
+
+  <!--Begin nieuwe hoofd-container-->
+  <div class="tekst-hoofd-container">
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-th" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Mobile-First Design</h3>
+        <p>Begin met mobiel, voeg desktop features toe</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Mobile-First Approach</h2>
+
+      <p>
+        Met Mobile-First design begin je met de mobiele versie en voeg je features toe voor grotere schermen.
+      </p>
+
+      <h3>Basis CSS (mobile)</h3>
+      <pre><code class="language-css">.container {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}</code></pre>
+
+      <h3>Toevoegen voor tablets en desktop</h3>
+      <pre><code class="language-css">@media (min-width: 768px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 18px;
+  }
+}</code></pre>
+
+      <p><strong>Voordeel:</strong> Website laadt sneller en is optimaal voor alle schermen!</p>
+
+    </div>
+
+  </div>
+
+  <!--Begin van nieuwe container.-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Media Queries: Het hart van responsief design</h2>
+      <p>
+        <strong>Media queries</strong> laten je CSS regels wijzigen op basis van schermgrootte, oriëntatie en andere eigenschappen.
+      </p>
+
+      <h3>Basis media query structuur</h3>
+      <pre><code class="language-css">@media (min-width: 768px) {
+  /* CSS regels voor tablets en groter */
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* CSS regels voor desktops */
+  .container {
+    width: 960px;
+  }
+}</code></pre>
+
+      <h3>Veel gebruikte breakpoints</h3>
+      <ul>
+        <li><strong>0-576px:</strong> Extra small (telefoons)</li>
+        <li><strong>576-768px:</strong> Small (grote telefoons)</li>
+        <li><strong>768-992px:</strong> Medium (tablets)</li>
+        <li><strong>992-1200px:</strong> Large (laptops)</li>
+        <li><strong>1200px+:</strong> Extra large (desktops)</li>
+      </ul>
+    </div>
+
+    <div class="tekst-code-container">
+        <pre><code class="language-css">
+/* Mobile first approach */
+.container {
+  width: 100%;
+  padding: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;  /* 1 kolom op mobiel */
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;  /* 2 kolommen */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;  /* 3 kolommen */
+  }
+}
+        </code></pre>
+    </div>
+  </div>
+
+  <!--Begin van nieuwe container.-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Responsieve afbeeldingen</h2>
+      <p>
+        Afbeeldingen moeten ook responsief zijn. Er zijn verschillende manieren:
+      </p>
+
+      <h3>Max-width op afbeeldingen</h3>
+      <pre><code class="language-css">img {
+  max-width: 100%;
+  height: auto;  /* Behoudt aspect ratio */
+}</code></pre>
+
+      <h3>Srcset voor verschillende breedte afbeeldingen</h3>
+      <pre><code class="language-html">&lt;img src="small.jpg"
+     srcset="medium.jpg 768w, large.jpg 1200w"
+     alt="Responsieve afbeelding"&gt;
+      </code></pre>
+
+      <p>De browser laadt de beste afbeelding voor het apparaat!</p>
+    </div>
+  </div>
+
+  <!--Begin van nieuwe container.-->
+  <div class="tekst-hoofd-container">
+    
+    <div class="tekst-links-container">
+      <h2>Eindopdracht les 6</h2>
+      <h3>Opdracht</h3>
+      <p>
+        Maak een volledig responsieve webpagina die perfect werkt op mobiel, tablet en desktop.
+      </p>
+
+      <h3>Vereisten</h3>
+      <ul>
+        <li>Mobile-first aanpak gebruiken</li>
+        <li>Minstens 3 media queries met verschillende breakpoints</li>
+        <li>Layouts die zich aanpassen (1 kolom → 2 kolommen → 3 kolommen)</li>
+        <li>Responsieve afbeeldingen met max-width: 100%</li>
+        <li>Test op minstens 3 verschillende schermgroottes</li>
+      </ul>
+
+      <h3>Bonus</h3>
+      <ul>
+        <li>Gebruik srcset voor afbeeldingen</li>
+        <li>Voeg hamburger menu toe voor mobiel</li>
+        <li>Optimaliseer viewpoint meta tag</li>
+      </ul>
+
+    </div> 
+  </div>
+
+  <div class="button">
+      <a href="les7.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris </p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+    </div>
+  </footer>
+<script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+</html>

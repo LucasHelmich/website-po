@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Les 9: DOM Manipulatie</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">JavaScript Les 9: DOM Manipulatie</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 9?</h3>
+      <ul>
+        <li>Wat het DOM is</li>
+        <li>Elementen selecteren en vinden</li>
+        <li>Inhoud van elementen veranderen</li>
+        <li>Attributen wijzigen</li>
+        <li>CSS klassen toevoegen en verwijderen</li>
+        <li>Nieuwe elementen maken en toevoegen</li>
+        <li>Elementen verwijderen</li>
+      </ul>
+      <h3>Aan het eind van les 9 kun je:</h3>
+      <ul>
+        <li>JavaScript code begrijpen en schrijven</li>
+        <li>DOM-elementen selecteren en wijzigen</li>
+        <li>Events afhandelen op webpagina's</li>
+        <li>Interactieve functies creëren</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-code" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>DOM Manipulatie</h3>
+        <p>Webpagina's dynamisch aanpassen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat is JavaScript?</h2>
+      <p>
+        JavaScript is een <strong>programmeertaal</strong> die in browsers werkt. Het voegt interactiviteit toe aan websites, zodat gebruikers met de pagina kunnen omgaan.
+      </p>
+      <p>
+        Terwijl <strong>HTML</strong> de structuur biedt en <strong>CSS</strong> de opmaak verzorgt, zorgt JavaScript voor <strong>gedrag en interactiviteit</strong>.
+      </p>
+      
+      <h3>Voorbeelden van wat JavaScript kan doen:</h3>
+      <ul>
+        <li>Knoppen reageren op klikken</li>
+        <li>Inhoud van pagina veranderen zonder te herladen</li>
+        <li>Validatie van formuliergegevens</li>
+        <li>Animaties en effecten</li>
+        <li>Data opslaan in de browser</li>
+        <li>Communicatie met servers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-plus" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Het script tag</h3>
+        <p>JavaScript toevoegen aan HTML</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>JavaScript toevoegen aan HTML</h2>
+      <p>Er zijn drie manieren om JavaScript toe te voegen aan een HTML-pagina:</p>
+
+      <h3>1. Inline JavaScript (in een element)</h3>
+      <p>Direct in een HTML-element met het <strong>onclick</strong> attribuut:</p>
+      <pre><code class="language-html">&lt;button onclick="alert('Hallo!')"&gt;Klik mij!&lt;/button&gt;</code></pre>
+
+      <h3>2. Intern JavaScript (in de pagina)</h3>
+      <p>In een <strong>&lt;script&gt;</strong> tag in de <strong>&lt;head&gt;</strong> of <strong>&lt;body&gt;</strong>:</p>
+      <pre><code class="language-javascript">&lt;script&gt;
+  console.log('Dit is JavaScript!');
+&lt;/script&gt;</code></pre>
+
+      <h3>3. Extern JavaScript (apart bestand)</h3>
+      <p>In een apart <strong>.js</strong> bestand dat je linkt:</p>
+      <pre><code class="language-html">&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+
+      <p><strong>Beste praktijk:</strong> Gebruik extern JavaScript voor grotere projecten - het maakt je code netter en herbruikbaar!</p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Variabelen</h2>
+      <p>
+        Een <strong>variabele</strong> is een container voor gegevens. Je gebruikt variabelen om waarden op te slaan en later te gebruiken.
+      </p>
+
+      <h3>Variabelen declareren</h3>
+      <pre><code class="language-javascript">let voornaam = "Lucas";
+let leeftijd = 16;
+let isStudent = true;
+const stad = "Amsterdam";</code></pre>
+
+      <p>
+        <strong>let</strong> = variabele die je kunt veranderen<br>
+        <strong>const</strong> = constante die niet verandert
+      </p>
+
+      <h3>Gegevenstypen</h3>
+      <ul>
+        <li><strong>String</strong> - Tekst: "Hallo", 'test'</li>
+        <li><strong>Number</strong> - Getallen: 42, 3.14, -5</li>
+        <li><strong>Boolean</strong> - Waar of onwaar: true, false</li>
+        <li><strong>Array</strong> - Lijst: [1, 2, 3] of ["a", "b", "c"]</li>
+        <li><strong>Object</strong> - Verzameling van data: {naam: "Lucas", leeftijd: 16}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-puzzle-piece" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Functies</h3>
+        <p>Herbruikbare code blokken</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Functies</h2>
+      <p>
+        Een <strong>functie</strong> is een herbruikbaar blok code dat je kunt aanroepen wanneer je het nodig hebt.
+      </p>
+
+      <h3>Functie definiëren en aanroepen</h3>
+      <pre><code class="language-javascript">function begroeting(naam) {
+  console.log("Hallo, " + naam);
+}
+
+// Functie aanroepen
+begroeting("Lucas");  // Output: Hallo, Lucas
+begroeting("Joris");  // Output: Hallo, Joris</code></pre>
+
+      <h3>Functie met return waarde</h3>
+      <pre><code class="language-javascript">function sum(a, b) {
+  return a + b;
+}
+
+let resultaat = sum(5, 3);  // resultaat = 8
+console.log(resultaat);     // Output: 8</code></pre>
+
+      <h3>Arrow functions (moderne syntax)</h3>
+      <pre><code class="language-javascript">const multiply = (x, y) => {
+  return x * y;
+}
+
+// Korte versie
+const divide = (x, y) => x / y;</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Events en Interactiviteit</h2>
+      <p>
+        <strong>Events</strong> zijn dingen die gebruikers doen, zoals klikken, typen, of hoveren. Je kunt erop reageren met JavaScript.
+      </p>
+
+      <h3>Veel gebruikte events</h3>
+      <ul>
+        <li><strong>click</strong> - Gebruiker klikt op element</li>
+        <li><strong>mouseover</strong> - Muis beweegt over element</li>
+        <li><strong>change</strong> - Waarde van input verandert</li>
+        <li><strong>submit</strong> - Formulier wordt ingediend</li>
+        <li><strong>load</strong> - Pagina is geladen</li>
+        <li><strong>keydown</strong> - Toets wordt ingedrukt</li>
+      </ul>
+
+      <h3>Event listener toevoegen</h3>
+      <pre><code class="language-javascript">const button = document.getElementById('myButton');
+
+button.addEventListener('click', function() {
+  alert('Button werd geklikt!');
+});</code></pre>
+
+      <h3>Event listener met arrow function</h3>
+      <pre><code class="language-javascript">button.addEventListener('mouseover', () => {
+  button.style.backgroundColor = 'red';
+});</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Console en Debugging</h2>
+      <p>
+        De <strong>console</strong> is een handig hulpmiddel voor debugging. Je kunt berichten afdrukken en fouten opsporen.
+      </p>
+
+      <h3>Console opening</h3>
+      <p>
+        Druk op <strong>F12</strong> of <strong>Ctrl+Shift+I</strong> (Windows) / <strong>Cmd+Option+I</strong> (Mac) en klik op het <strong>Console</strong> tabblad.
+      </p>
+
+      <h3>Console methoden</h3>
+      <pre><code class="language-javascript">console.log("Dit is een normale bericht");
+console.warn("Dit is een waarschuwing");
+console.error("Dit is een fout");
+
+let persoon = {naam: "Lucas", leeftijd: 16};
+console.table(persoon);  // Toont data in tabel vorm</code></pre>
+
+      <h3>Veelgemaakte fouten:</h3>
+      <ul>
+        <li>Typos in variabelen of functienamen</li>
+        <li>Elementen die niet bestaan in HTML</li>
+        <li>Foute gegevenstypen (getal in plaats van string)</li>
+        <li>Vergeten semicolons (hoewel JavaScript er meestal mee kan omgaan)</li>
+      </ul>
+
+      <p><strong>Tip:</strong> Gebruik console.log() veelvuldig om te controleren wat je code doet!</p>
+
+    
+        <a href="les10.html" class="volgende-les">Volgende les <i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design met CSS</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+      <h4>JavaScript Lessen</h4>
+      <ul>
+        <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+        <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+        <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+        <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+        <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Python Lessen</h4>
+      <ul>
+        <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+        <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+        <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+        <li><a href="les16.html">Python Les 16: Functies</a></li>
+        <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+        <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+        <li><a href="les19.html">Python Les 19: File Handling</a></li>
+        <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+        <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+      </ul>
+    </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

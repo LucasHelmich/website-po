@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Les 20: Object-Oriented Programming</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </a>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">Python Les 20: Object-Oriented Programming</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 8?</h3>
+      <ul>
+        <li>Wat is object-oriented programming?</li>
+        <li>Klassen en objecten</li>
+        <li>Attributen en methodes</li>
+        <li>Constructors (__init__)</li>
+        <li>Instance vs class variabelen</li>
+        <li>Overerving (inheritance)</li>
+        <li>Polymorfisme</li>
+        <li>Encapsulatie</li>
+      </ul>
+      <h3>Aan het eind van les 8 kun je:</h3>
+      <ul>
+        <li>Eigen klassen maken</li>
+        <li>Objecten instantiëren</li>
+        <li>Methodes en attributen gebruiken</li>
+        <li>Overerving toepassen</li>
+        <li>Complexe object-georiënteerde programma's schrijven</li>
+        <li>Code organiseren met OOP principes</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-cubes" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>OOP</h3>
+        <p>Object-georiënteerd programmeren</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat is Object-Oriented Programming?</h2>
+      <p>
+        <strong>Object-Oriented Programming (OOP)</strong> is een programmeerparadigma dat draait om objecten.
+        Objecten bundelen data (attributen) en gedrag (methodes) in één eenheid.
+      </p>
+
+      <h3>Voordelen van OOP</h3>
+      <ul>
+        <li><strong>Modulariteit:</strong> Code is opgedeeld in herbruikbare objecten</li>
+        <li><strong>Herbruikbaarheid:</strong> Klassen kunnen worden uitgebreid en hergebruikt</li>
+        <li><strong>Onderhoudbaarheid:</strong> Makkelijker om code te wijzigen en uit te breiden</li>
+        <li><strong>Abstractie:</strong> Complexiteit wordt verborgen achter eenvoudige interfaces</li>
+        <li><strong>Real-world modeling:</strong> Objecten vertegenwoordigen echte wereld entiteiten</li>
+      </ul>
+
+      <h3>Klassen vs Objecten</h3>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <th style="border: 1px solid #ddd; padding: 8px;">Klasse</th>
+          <th style="border: 1px solid #ddd; padding: 8px;">Object</th>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">Blauwdruk/template</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Instantie van een klasse</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">Definieert structuur</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Heeft concrete waarden</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">Eenmalig gedefinieerd</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Meerdere instanties mogelijk</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px;">Auto (algemeen)</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">Specifieke auto (Lucas' auto)</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-cube" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Klassen</h3>
+        <p>Blauwdrukken voor objecten</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Klassen en Objecten Maken</h2>
+
+      <h3>Eenvoudige klasse</h3>
+      <pre><code class="language-python">class Hond:
+    """Een eenvoudige Hond klasse"""
+
+    def blaf(self):
+        """Methode om te blaffen"""
+        print("Woef!")
+
+    def eet(self, voedsel):
+        """Methode om te eten"""
+        print(f"De hond eet {voedsel}")
+
+# Objecten maken (instantiëren)
+mijn_hond = Hond()
+jouw_hond = Hond()
+
+# Methodes aanroepen
+mijn_hond.blaf()          # Output: Woef!
+jouw_hond.eet("brokken")  # Output: De hond eet brokken</code></pre>
+
+      <h3>Attributen toevoegen</h3>
+      <pre><code class="language-python">class Hond:
+    def __init__(self, naam, ras):
+        self.naam = naam  # Instance attribute
+        self.ras = ras    # Instance attribute
+
+    def blaf(self):
+        print(f"{self.naam} zegt: Woef!")
+
+    def info(self):
+        print(f"Naam: {self.naam}")
+        print(f"Ras: {self.ras}")
+
+# Objecten maken met attributen
+hond1 = Hond("Buddy", "Golden Retriever")
+hond2 = Hond("Max", "Labrador")
+
+hond1.blaf()   # Output: Buddy zegt: Woef!
+hond2.info()   # Output: Naam: Max, Ras: Labrador</code></pre>
+
+      <h3>Constructor (__init__)</h3>
+      <pre><code class="language-python">class Student:
+    def __init__(self, naam, leeftijd, klas="Onbekend"):
+        """Constructor - wordt automatisch aangeroepen bij instantiëring"""
+        self.naam = naam
+        self.leeftijd = leeftijd
+        self.klas = klas
+        self.cijfers = []  # Lege lijst voor cijfers
+
+    def voeg_cijfer_toe(self, cijfer):
+        self.cijfers.append(cijfer)
+
+    def gemiddelde(self):
+        if self.cijfers:
+            return sum(self.cijfers) / len(self.cijfers)
+        return 0
+
+# Gebruiken
+student1 = Student("Lucas", 16, "4VWO")
+student1.voeg_cijfer_toe(8.5)
+student1.voeg_cijfer_toe(7.8)
+
+print(f"{student1.naam} - Gemiddelde: {student1.gemiddelde():.1f}")</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Instance vs Class Variabelen</h2>
+
+      <h3>Instance variabelen</h3>
+      <pre><code class="language-python">class Student:
+    def __init__(self, naam, leeftijd):
+        self.naam = naam        # Instance variabele - uniek per object
+        self.leeftijd = leeftijd
+        self.cijfers = []       # Instance variabele
+
+student1 = Student("Lucas", 16)
+student2 = Student("Joris", 17)
+
+student1.cijfers.append(8.5)  # Alleen student1 heeft dit cijfer
+student2.cijfers.append(7.2)  # Alleen student2 heeft dit cijfer
+
+print(student1.cijfers)  # [8.5]
+print(student2.cijfers)  # [7.2]</code></pre>
+
+      <h3>Class variabelen</h3>
+      <pre><code class="language-python">class Student:
+    school = "Alberdingk Thijm"  # Class variabele - gedeeld door alle objecten
+    aantal_studenten = 0         # Class variabele
+
+    def __init__(self, naam, leeftijd):
+        self.naam = naam
+        self.leeftijd = leeftijd
+        Student.aantal_studenten += 1  # Verhogen bij elke nieuwe student
+
+# Alle objecten delen dezelfde class variabelen
+student1 = Student("Lucas", 16)
+student2 = Student("Joris", 17)
+
+print(student1.school)           # Alberdingk Thijm
+print(student2.school)           # Alberdingk Thijm
+print(Student.aantal_studenten)  # 2
+
+# Class variabele wijzigen
+Student.school = "Nieuwe School"
+print(student1.school)  # Nieuwe School (veranderd voor alle objecten)</code></pre>
+
+      <h3>Instance methodes vs Class methodes</h3>
+      <pre><code class="language-python">class Student:
+    school = "Alberdingk Thijm"
+    aantal_studenten = 0
+
+    def __init__(self, naam):
+        self.naam = naam
+        Student.aantal_studenten += 1
+
+    def info(self):  # Instance methode
+        return f"Naam: {self.naam}, School: {self.school}"
+
+    @classmethod
+    def totaal_aantal(cls):  # Class methode
+        return f"Totaal aantal studenten: {cls.aantal_studenten}"
+
+    @staticmethod
+    def school_info():  # Static methode
+        return "Dit is Alberdingk Thijm school"
+
+student1 = Student("Lucas")
+print(student1.info())           # Instance methode
+print(Student.totaal_aantal())   # Class methode
+print(Student.school_info())     # Static methode</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-sitemap" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Overerving</h3>
+        <p>Klassen uitbreiden</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Overerving (Inheritance)</h2>
+
+      <h3>Basis overerving</h3>
+      <pre><code class="language-python">class Dier:
+    def __init__(self, naam):
+        self.naam = naam
+
+    def maak_geluid(self):
+        pass  # Abstracte methode
+
+    def info(self):
+        return f"Ik ben {self.naam}"
+
+class Hond(Dier):  # Hond erft van Dier
+    def maak_geluid(self):
+        return "Woef!"
+
+class Kat(Dier):   # Kat erft van Dier
+    def maak_geluid(self):
+        return "Miauw!"
+
+# Gebruiken
+hond = Hond("Buddy")
+kat = Kat("Whiskers")
+
+print(hond.info())        # Ik ben Buddy
+print(hond.maak_geluid()) # Woef!
+print(kat.info())         # Ik ben Whiskers
+print(kat.maak_geluid())  # Miauw!</code></pre>
+
+      <h3>Overerving met extra functionaliteit</h3>
+      <pre><code class="language-python">class Voertuig:
+    def __init__(self, merk, model):
+        self.merk = merk
+        self.model = model
+        self.snelheid = 0
+
+    def starten(self):
+        return f"{self.merk} {self.model} start op"
+
+    def stoppen(self):
+        self.snelheid = 0
+        return f"{self.merk} {self.model} stopt"
+
+class Auto(Voertuig):
+    def __init__(self, merk, model, aantal_deuren):
+        super().__init__(merk, model)  # Roep parent constructor aan
+        self.aantal_deuren = aantal_deuren
+        self.brandstof = 100
+
+    def rijden(self, afstand):
+        if self.brandstof > 0:
+            self.snelheid = 60
+            self.brandstof -= afstand * 0.1
+            return f"Rijdt {afstand}km, resterende brandstof: {self.brandstof:.1f}%"
+        return "Geen brandstof meer!"
+
+auto = Auto("Toyota", "Corolla", 4)
+print(auto.starten())        # Toyota Corolla start op
+print(auto.rijden(50))       # Rijdt 50km, resterende brandstof: 95.0%
+print(auto.stoppen())        # Toyota Corolla stopt</code></pre>
+
+      <h3>Multiple inheritance</h3>
+      <pre><code class="language-python">class Vliegend:
+    def vlieg(self):
+        return "Ik kan vliegen!"
+
+class Zwemmend:
+    def zwem(self):
+        return "Ik kan zwemmen!"
+
+class Eend(Vliegend, Zwemmend):  # Multiple inheritance
+    def __init__(self, naam):
+        self.naam = naam
+
+eend = Eend("Donald")
+print(eend.vlieg())  # Ik kan vliegen!
+print(eend.zwem())   # Ik kan zwemmen!</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Polymorfisme</h2>
+
+      <h3>Method overriding</h3>
+      <pre><code class="language-python">class Dier:
+    def maak_geluid(self):
+        return "Geluid..."
+
+class Hond(Dier):
+    def maak_geluid(self):  # Override parent methode
+        return "Woef!"
+
+class Kat(Dier):
+    def maak_geluid(self):  # Override parent methode
+        return "Miauw!"
+
+# Polymorfisme - dezelfde methode, verschillend gedrag
+dieren = [Hond("Buddy"), Kat("Whiskers"), Dier("Onbekend")]
+
+for dier in dieren:
+    print(f"{dier.__class__.__name__}: {dier.maak_geluid()}")
+
+# Output:
+# Hond: Woef!
+# Kat: Miauw!
+# Dier: Geluid...</code></pre>
+
+      <h3>Duck typing</h3>
+      <pre><code class="language-python">class Auto:
+    def beweeg(self):
+        return "Rijdt op de weg"
+
+class Boot:
+    def beweeg(self):
+        return "Vaart op het water"
+
+class Vliegtuig:
+    def beweeg(self):
+        return "Vliegt door de lucht"
+
+def start_rit(voertuig):
+    """Functie werkt met elk object dat een beweeg() methode heeft"""
+    return voertuig.beweeg()
+
+# Polymorfisme door duck typing
+voertuigen = [Auto(), Boot(), Vliegtuig()]
+
+for voertuig in voertuigen:
+    print(start_rit(voertuig))
+
+# Output:
+# Rijdt op de weg
+# Vaart op het water
+# Vliegt door de lucht</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #306998 0%, #FFD43B 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-lock" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Encapsulatie</h3>
+        <p>Data bescherming</p>
+      </div>
+    </div>
+
+    <div class="tekst-links-container">
+      <h2>Encapsulatie</h2>
+
+      <h3>Private attributen</h3>
+      <pre><code class="language-python">class BankAccount:
+    def __init__(self, eigenaar, saldo=0):
+        self.eigenaar = eigenaar
+        self.__saldo = saldo  # Private attribute (naam begint met __)
+
+    def stort(self, bedrag):
+        if bedrag > 0:
+            self.__saldo += bedrag
+            print(f"€{bedrag} gestort")
+
+    def neem_op(self, bedrag):
+        if 0 < bedrag <= self.__saldo:
+            self.__saldo -= bedrag
+            print(f"€{bedrag} opgenomen")
+        else:
+            print("Onvoldoende saldo of ongeldig bedrag")
+
+    def get_saldo(self):  # Getter methode
+        return self.__saldo
+
+account = BankAccount("Lucas", 1000)
+account.stort(500)           # €500 gestort
+account.neem_op(200)         # €200 opgenomen
+print(account.get_saldo())   # 1300
+
+# Direct toegang tot private attribute (werkt niet goed)
+# print(account.__saldo)     # AttributeError
+print(account._BankAccount__saldo)  # 1300 (name mangling)</code></pre>
+
+      <h3>Properties</h3>
+      <pre><code class="language-python">class Student:
+    def __init__(self, naam):
+        self._naam = naam  # Protected attribute (één underscore)
+
+    @property
+    def naam(self):  # Getter
+        return self._naam
+
+    @naam.setter
+    def naam(self, waarde):  # Setter
+        if isinstance(waarde, str) and len(waarde) > 0:
+            self._naam = waarde
+        else:
+            raise ValueError("Naam moet een niet-lege string zijn")
+
+student = Student("Lucas")
+print(student.naam)     # Lucas (via getter)
+
+student.naam = "Joris"  # Via setter
+print(student.naam)     # Joris
+
+# student.naam = ""     # ValueError!</code></pre>
+
+      <h3>Speciale methodes</h3>
+      <pre><code class="language-python">class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):  # Voor print() en str()
+        return f"Vector({self.x}, {self.y})"
+
+    def __repr__(self):  # Voor debugging
+        return f"Vector(x={self.x}, y={self.y})"
+
+    def __add__(self, other):  # Voor + operator
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __eq__(self, other):  # Voor == operator
+        return self.x == other.x and self.y == other.y
+
+v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+
+print(v1)           # Vector(1, 2)
+print(repr(v1))     # Vector(x=1, y=2)
+print(v1 + v2)      # Vector(4, 6)
+print(v1 == v2)     # False</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktijkopdracht</h2>
+
+      <h3>Oefening 1: Bank systeem</h3>
+      <p>Maak een bankrekening klasse met:</p>
+      <ul>
+        <li>Storten en opnemen methodes</li>
+        <li>Saldo controle</li>
+        <li>Transactie geschiedenis</li>
+        <li>Minimum saldo bescherming</li>
+      </ul>
+
+      <h3>Oefening 2: Game characters</h3>
+      <p>Creëer een RPG systeem met:</p>
+      <ul>
+        <li>Base Character klasse</li>
+        <li>Warrior, Mage, Archer subklassen</li>
+        <li>Attack en defense methodes</li>
+        <li>Health en mana systemen</li>
+      </ul>
+
+      <h3>Oefening 3: School administratie</h3>
+      <p>Ontwerp een schoolsysteem met:</p>
+      <ul>
+        <li>Student en Teacher klassen</li>
+        <li>Course klasse met inschrijvingen</li>
+        <li>Cijfer registratie</li>
+        <li>Rapport generatie</li>
+      </ul>
+
+      <h3>Oefening 4: E-commerce systeem</h3>
+      <p>Bouw een winkel systeem met:</p>
+      <ul>
+        <li>Product, Cart, Customer klassen</li>
+        <li>Order processing</li>
+        <li>Inventory management</li>
+        <li>Discount systemen</li>
+      </ul>
+
+      <a href="
+        class="volgende-les">Volgende Les: Modules en Libraries <i class="fa fa-arrow-right"></i></a>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>JavaScript Lessen</h4>
+        <ul>
+          <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+          <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+          <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+          <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+          <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>

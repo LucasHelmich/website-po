@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<!--Pagina WEL klaar-->
+
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Les 12: API & Asynchronous Programming</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="fotos/Favicon_ATC.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./JavaScript/Searchbar.js"></script>
+  <script src="./JavaScript/ThemeToggle.js"></script>
+  <script src="./JavaScript/AccountManager.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="navbar-button"><a href="home.html">Home</a></div>
+      <div class="navbar-button"><a href="taakverdeling.html">Taakverdeling</a></div>
+      <div class="navbar-button"><a href="opgaven.html">Opgaven</a></div>
+      <div class="active">
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            Theorie <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="les1.html">HTML Les 1: HTML Basis</a>
+            <a href="les2.html">HTML Les 2: Tekst maken</a>
+            <a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a>
+            <a href="les4.html">CSS Les 4: Basis CSS</a>
+            <a href="les5.html">CSS Les 5: Layout in CSS</a>
+            <a href="les6.html">CSS Les 6: Responsive design</a>
+            <a href="les7.html">CSS Les 7: Grid & Animations</a>
+            <a href="les8.html">JavaScript Les 8: Introductie</a>
+            <a href="les9.html">JavaScript Les 9: DOM Manipulatie</a>
+            <a href="les10.html">JavaScript Les 10: Data Opslaan</a>
+            <a href="les11.html">JavaScript Les 11: Geavanceerd</a>
+            <a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a>
+            <a href="les13.html">Python Les 13: Introductie en Installatie</a>
+            <a href="les14.html">Python Les 14: Variabelen en Datatypes</a>
+            <a href="les15.html">Python Les 15: Control Structures</a>
+            <a href="les16.html">Python Les 16: Functies</a>
+            <a href="les17.html">Python Les 17: Lists en Tuples</a>
+            <a href="les18.html">Python Les 18: Dictionaries en Sets</a>
+            <a href="les19.html">Python Les 19: File Handling</a>
+            <a href="les20.html">Python Les 20: Object-Oriented Programming</a>
+            <a href="les21.html">Python Les 21: Modules en Libraries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <button class="search-icon" onclick="toggleSearch()" type="button">
+          🔍
+        </button>
+        <input
+          type="text"
+          id="zoekInput"
+          placeholder="Zoek les..."
+          oninput="showSuggesties(this.value)"
+          onkeydown="navigateSuggesties(event)"
+        >
+        <div id="suggesties" class="suggesties-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <button id="themeToggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; transition: all 0.3s ease;">☀️</button>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="javascript:void(0)" id="accountLink">Account</a>
+    </div>
+
+    <div class="navbar-button contact-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <h1 class="les-titel">JavaScript Les 12: API & Asynchronous Programming</h1>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat gaan we leren?</h2>
+      <h3>Wat gaan we leren in les 12?</h3>
+      <ul>
+        <li>Wat een API is</li>
+        <li>Fetch API gebruiken</li>
+        <li>Promises en .then()</li>
+        <li>Async/await syntax</li>
+        <li>Foutafhandeling</li>
+        <li>JSON data verwerken</li>
+        <li>Praktische voorbeelden</li>
+      </ul>
+      <h3>Aan het eind van les 12 kun je:</h3>
+      <ul>
+        <li>Data van externe APIs ophalen</li>
+        <li>Asynchrone code correct schrijven</li>
+        <li>Dynamische, real-time websites bouwen</li>
+        <li>Je website verbinden met de wereld!</li>
+      </ul>
+    </div>
+
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-cloud" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>API & Async</h3>
+        <p>Verbind je met het web</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Wat is een API?</h2>
+      <p>
+        Een <strong>API (Application Programming Interface)</strong> is een manier waarvoor je data van externe services kunt ophalen.
+      </p>
+
+      <p>
+        Veel websites (Google, OpenWeather, Twitter, etc.) bieden APIs aan zodat jij hun data kunt gebruiken.
+      </p>
+
+      <h3>Voordelen van APIs</h3>
+      <ul>
+        <li>Haal data van andere websites</li>
+        <li>Stuur data naar servers</li>
+        <li>Communiceer met databases</li>
+        <li>Maak dynamische, real-time websites</li>
+      </ul>
+
+      <h3>Populaire gratis APIs</h3>
+      <ul>
+        <li><strong>OpenWeather API</strong> - Weersinformatie</li>
+        <li><strong>JSONPlaceholder</strong> - Test data voor oefening</li>
+        <li><strong>GitHub API</strong> - Githubgegevens</li>
+        <li><strong>CatAPI</strong> - Katten afbeeldingen</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-download" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Fetch API</h3>
+        <p>Data ophalen van servers</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Fetch API</h2>
+      <p>
+        De <strong>Fetch API</strong> is de moderne manier om data van servers op te halen in JavaScript.
+      </p>
+
+      <h3>Basis structuur</h3>
+      <pre><code class="language-javascript">fetch('https://api.voorbeeld.nl/gegevens')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // Werk met de data
+  })
+  .catch(error => {
+    console.error('Fout:', error);
+  });</code></pre>
+
+      <h3>Stap-voor-stap uitleg</h3>
+      <ul>
+        <li><strong>fetch(url)</strong> - Stuur verzoek naar server</li>
+        <li><strong>.then(response => response.json())</strong> - Zet response om naar JSON</li>
+        <li><strong>.then(data => {})</strong> - Werk met de data</li>
+        <li><strong>.catch(error => {})</strong> - Handel fouten af</li>
+      </ul>
+
+      <h3>Voorbeeld: Cat API</h3>
+      <pre><code class="language-javascript">fetch('https://api.thecatapi.com/v1/images/search')
+  .then(response => response.json())
+  .then(data => {
+    const imageUrl = data[0].url;
+    document.querySelector('img').src = imageUrl;
+  });</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Promises </h2>
+
+      <p>
+        <strong>Promises</strong> vertegenwoordigen een waarde die later beschikbaar wordt. Ze hebben drie toestanden:
+      </p>
+
+      <ul>
+        <li><strong>Pending</strong> - Wachting op resultaat</li>
+        <li><strong>Fulfilled</strong> - Succes! Data beschikbaar</li>
+        <li><strong>Rejected</strong> - Fout! Iets ging fout</li>
+      </ul>
+
+      <h3>Promise aanmaken</h3>
+      <pre><code class="language-javascript">const myPromise = new Promise((resolve, reject) => {
+  // Asynchrone taak
+  setTimeout(() => {
+    resolve('Succes!');
+    // of: reject('Fout!');
+  }, 1000);
+});
+
+myPromise
+  .then(result => console.log(result))
+  .catch(error => console.error(error));</code></pre>
+
+      <h3>Promise chaining</h3>
+      <pre><code class="language-javascript">fetch('/data.json')
+  .then(resp => resp.json())
+  .then(data => processData(data))
+  .then(result => console.log(result))
+  .catch(err => console.error(err));</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-rechts-container">
+      <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 40px; border-radius: 15px; color: white; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fa fa-hourglass-end" style="font-size: 60px; margin-bottom: 20px;"></i>
+        <h3>Async / Await</h3>
+        <p>Moderne asynchrone code</p>
+      </div>
+    </div>
+    
+    <div class="tekst-links-container">
+      <h2>Async / Await</h2>
+
+      <p>
+        <strong>Async/await</strong> is een modernere, schonere manier om met Promises te werken. Het код ziet er more synchronous uit.
+      </p>
+
+      <h3>Async functie</h3>
+      <pre><code class="language-javascript">async function getData() {
+  // Hier kun je await gebruiken
+}
+
+// of met arrow function
+const getData = async () => {
+  // Hier kun je await gebruiken
+};</code></pre>
+
+      <h3>Await gebruiken</h3>
+      <pre><code class="language-javascript">async function fetchUser() {
+  const response = await fetch('/api/user');
+  const data = await response.json();
+  console.log(data);
+}
+
+fetchUser();</code></pre>
+
+      <h3>Foutafhandeling met try/catch</h3>
+      <pre><code class="language-javascript">async function fetchData() {
+  try {
+    const response = await fetch('https://api.voorbeeld.nl');
+    if (!response.ok) throw new Error('Network error');
+    
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Fout:', error.message);
+  } finally {
+    console.log('Klaar!');
+  }
+}
+
+fetchData();</code></pre>
+
+      <p><strong>Voordeel:</strong> Code ziet er veel leesbaarder uit!</p>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>POST Requests</h2>
+
+      <p>
+        Met <strong>POST</strong> stuur je data naar een server (in plaats van data op te halen).
+      </p>
+
+      <h3>POST met fetch</h3>
+      <pre><code class="language-javascript">async function postData() {
+  const response = await fetch('/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      naam: 'Lucas',
+      email: 'lucas@voorbeeld.nl'
+    })
+  });
+
+  const result = await response.json();
+  console.log(result);
+}
+
+postData();</code></pre>
+
+      <h3>Fetch opties</h3>
+      <ul>
+        <li><strong>method</strong> - GET, POST, PUT, DELETE</li>
+        <li><strong>headers</strong> - Informatie over het verzoek</li>
+        <li><strong>body</strong> - Data die je stuurt (JSON.stringify-d)</li>
+      </ul>
+
+      <h3>Voorbeeld: Formulier versturen</h3>
+      <pre><code class="language-javascript">async function submitForm(event) {
+  event.preventDefault();
+  
+  const formulier = event.target;
+  const formData = {
+    naam: formulier.naam.value,
+    email: formulier.email.value,
+    bericht: formulier.bericht.value
+  };
+
+  try {
+    const response = await fetch('/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(formData)
+    });
+    
+    const result = await response.json();
+    console.log('Succes:', result);
+  } catch (error) {
+    console.error('Fout:', error);
+  }
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="tekst-hoofd-container">
+    <div class="tekst-links-container">
+      <h2>Praktisch voorbeeld: Weer-app</h2>
+
+      <p>Hier een volledig voorbeeld van een weer-app die OpenWeather API gebruikt:</p>
+
+      <pre><code class="language-javascript">async function getWeather(city) {
+  const apiKey = 'JE_API_KEY_HIER';
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Stad niet gevonden');
+    
+    const data = await response.json();
+    
+    console.log(`Weer in ${city}:`);
+    console.log(`Temperatuur: ${data.main.temp}°C`);
+    console.log(`Beschrijving: ${data.weather[0].description}`);
+    
+    // Update DOM
+    document.getElementById('temp').textContent = data.main.temp + '°C';
+    document.getElementById('description').textContent = data.weather[0].main;
+  } catch (error) {
+    console.error('Fout:', error.message);
+    document.getElementById('error').textContent = error.message;
+  }
+}
+
+// Gebruiker invoer
+document.getElementById('searchBtn').addEventListener('click', function() {
+  const city = document.getElementById('cityInput').value;
+  getWeather(city);
+});</code></pre>
+
+      <p><strong>Dit doet:</strong> Haalt weergegevens op basis op stad, toont ze in de DOM!</p>
+    
+    
+    <a href="les13.html" class="volgende-les"> Volgende les <i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+   
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2026 Lucas & Joris</p>
+        <p>Alle rechten voorbehouden.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>HTML Lessen</h4>
+        <ul>
+          <li><a href="les1.html">HTML Les 1: HTML Basis</a></li>
+          <li><a href="les2.html">HTML Les 2: Tekst maken</a></li>
+          <li><a href="les3.html">HTML Les 3: Afbeeldingen toevoegen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>CSS Lessen</h4>
+        <ul>
+          <li><a href="les4.html">CSS Les 4: Basis CSS</a></li>
+          <li><a href="les5.html">CSS Les 5: Layout in CSS</a></li>
+          <li><a href="les6.html">CSS Les 6: Responsive design</a></li>
+          <li><a href="les7.html">CSS Les 7: Grid & Animations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>JavaScript Lessen</h4>
+        <ul>
+          <li><a href="les8.html">JavaScript Les 8: Introductie</a></li>
+          <li><a href="les9.html">JavaScript Les 9: DOM Manipulatie</a></li>
+          <li><a href="les10.html">JavaScript Les 10: Data Opslaan</a></li>
+          <li><a href="les11.html">JavaScript Les 11: Geavanceerd</a></li>
+          <li><a href="les12.html">JavaScript Les 12: API & Asynchronous Programming</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Python Lessen</h4>
+        <ul>
+          <li><a href="les13.html">Python Les 13: Introductie en Installatie</a></li>
+          <li><a href="les14.html">Python Les 14: Variabelen en Datatypes</a></li>
+          <li><a href="les15.html">Python Les 15: Control Structures</a></li>
+          <li><a href="les16.html">Python Les 16: Functies</a></li>
+          <li><a href="les17.html">Python Les 17: Lists en Tuples</a></li>
+          <li><a href="les18.html">Python Les 18: Dictionaries en Sets</a></li>
+          <li><a href="les19.html">Python Les 19: File Handling</a></li>
+          <li><a href="les20.html">Python Les 20: Object-Oriented Programming</a></li>
+          <li><a href="les21.html">Python Les 21: Modules en Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Update account link based on login status
+  window.addEventListener('DOMContentLoaded', () => {
+    const accountLink = document.getElementById('accountLink');
+    const isLoggedIn = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn) {
+      const user = JSON.parse(isLoggedIn);
+      accountLink.textContent = user.name;
+      accountLink.href = './profiel.html';
+    } else {
+      accountLink.textContent = 'Login';
+      accountLink.href = './login.html';
+    }
+  });
+</script>
+</body>
+
+</html>
